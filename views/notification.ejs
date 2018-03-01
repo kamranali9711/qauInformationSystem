@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<link href="/css/notification.css" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--For clander -->
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<style>
+ 
+  </style>
+<style>
+
+
+</style>
+
+<style>
+
+</style>
+</head>
+<body onload="myFunction()">
+<div>
+	
+		 <div  >
+        <img src="/images/qau1.png" height="100px" width="700px" style="margin-left: 300px">
+        
+    </div>
+	<div onload="myFunction()">
+			<div class="nav">
+				<ul >
+				<li class="Dashbord"><a href="/page/dashbord">Dashbord</a></li>
+				<li class="Schorarship"><a  href="/page/scholarships">Schorarship</a></li>
+				<li class="Transport"><a href="/page/transports">Transport</a></li>
+				<li class="Dining"><a href="/page/dining">Dining</a></li>
+				<li class="Program"><a class="active" href="/page/notification">Notification</a></li>
+				<li class="Events"><a href="/page/events">Events</a></li>
+				<li class="News"><a href="/page/news">News</a></li>
+				<li class="News"><a  href="/page/admission">Admission</a></li>
+				<li class="Logout" style="float:right"><a href="/">Logout</a></li>
+				<div class="dropdown">
+					<button class="dropbtn">Data View 
+					<i class="fa fa-caret-down"></i>
+					</button>
+					<div class="dropdown-content">
+					<a href="/page/viewscholarships">Schorarship Data</a>
+					<a href="/page/viewstransport">Transport Data</a>
+					<a href="/page/viewsdining">Dining Data</a>
+					<a href="/page/viewsevent">Events Data</a>
+					<a href="/page/viewnews">News Data</a>
+	  <a href="/page/viewadmission">Admission Data</a>
+	  <a href="/page/viewnotification">Notification Data</a>
+					</div>
+				</div> 
+				
+
+			  </ul>
+			
+			</div>
+			<div class="form">
+				<h2 style="margin-left:450px">Notification detail Form </h2>
+				
+				<form  method="post" id="form"  name="myForm" type="submit" action="/api/notification/add">
+					<label for="fname" style="margin-left:30px; margin-top:50px">Title</label>
+					<textarea class="dataedit" name="title" type="text" id="title" rows="2" cols="150" required placeholder="Title of Notification...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
+					
+					<!-- Band Description
+					<input type="text" id="fname" name="firstname" required placeholder="Your name.."> -->
+
+					
+					<label for="lname" style="margin-left:30px; margin-top:50px; padding-top:50px">Description</label>
+					<textarea class="dataedit" name="description" type="text" id="description" rows="5" cols="150" required placeholder="Description of Notification...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
+
+					
+					<label  style="margin-left:35%; margin-top:50px">Last Date: </label>
+					 <input id="datepicker"  required />
+			<!--		<input type="date" name="lastdate" id="lastdate" required> -->
+
+					
+					<button type="submit"  class="button button1"  style="margin-top:30px">Submit</button>
+					
+         
+			
+				<!-- Band Description 
+				<label for="country">Country</label>
+				<select id="country" name="country">
+				  <option value="australia">Australia</option>
+				  <option value="canada">Canada</option>
+				  <option value="usa">USA</option>
+				</select>-->
+		  
+		   
+				</form>
+                
+     
+			
+			</div>
+				
+			
+			
+		
+			
+		
+
+
+
+	</div>
+	
+</div>
+
+<!-- Band Description -->
+
+<!-- For calander  -->
+<script>
+  $(document).ready(function() {
+    $("#datepicker").datepicker();
+  });
+  </script>
+
+
+<!-- For Background image -->
+<script>
+function myFunction() {
+    document.body.style.backgroundColor = "#f3f3f3";
+    document.body.style.backgroundImage = "url('https://www.digitalplatforms.co.za/wp-content/uploads/2015/11/Website-Design-Background.png')";
+	  var mydata;
+    var userdata;
+    var id;
+  $(document).ready(function(){
+
+            $.getJSON("http://localhost:3000/api/scholarship", function(data){
+                
+                $.each(data, function(i, field){
+                  userdata = data;
+                     
+                   $('#myTable').append('<tr><td>'+field.title+'</td><td>'+field.requirement+'</td><td>'+field.description+'</td><td>'+field.date+'</td><td><button>Update</button></td><td><button onclick="get()"  >Delete</button></td></tr>');
+                     /*mydata= field.title + field.requirement + field.description + field.date;*/
+                    
+                    });
+
+ 
+            })
+        });
+
+
+}
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>
+

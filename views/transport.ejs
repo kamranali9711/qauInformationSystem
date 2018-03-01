@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="/css/transport.css" rel="stylesheet">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body onload="myFunction()">
+<div>
+	 <div  >
+        <img src="/images/qau1.png" height="100px" width="700px" style="margin-left: 300px">
+        
+    </div>
+	
+			
+	<div onload="myFunction()">
+			<div class="nav">
+				<ul>
+				<li class="Dashbord"><a href="/page/dashbord">Dashbord</a></li>
+				<li class="Schorarship"><a  href="/page/scholarships">Schorarship</a></li>
+				<li><a  class="active" href="/page/transports">Transport</a></li>
+				<li class="Dining"><a href="/page/dining">Dining</a></li>
+				<li class="Program"><a href="/page/notification">Notification</a></li>
+				<li class="Events"><a href="/page/events">Events</a></li>
+				<li class="News"><a href="/page/news">News</a></li>
+				<li class="News"><a href="/page/admission">Admission</a></li>
+				<li class="Logout" style="float:right"><a href="/">Logout</a></li>
+				<div class="dropdown">
+					<button class="dropbtn" >Data View 
+					<i class="fa fa-caret-down"></i>
+					</button>
+					<div class="dropdown-content">
+					<a href="/page/viewscholarships">Schorarship Data</a>
+					<a href="/page/viewstransport">Transport Data</a>
+					<a href="/page/viewsdining">Dining Data</a>
+					<a href="/page/viewsevent">Events Data</a>
+					<a href="/page/viewnews">News Data</a>
+	  <a href="/page/viewadmission">Admission Data</a>
+	  <a href="/page/viewnotification">Notification Data</a>
+					</div>
+				</div> 
+			  </ul>
+			
+			</div>
+			<div class="form">
+				<h2 style="margin-left:450px">Transport detail Form </h2>
+				
+				<form  method="post" id="form"  name="myForm" type="submit" action="/api/routes/add">
+					<label for="route" style="margin-left:250px;margin-top:50px; padding-top:50px">Route</label>
+					<label for="busno" style="margin-left:300px;margin-top:50px; padding-top:50px">Bus No</label><br>
+					<textarea class="dataedit" name="route" type="text" id="route" rows="2" cols="25" required placeholder="Enter route No...." style="margin-left:250px;margin-top:10px"></textarea>
+					
+					<!-- Band Description
+					<input type="text" id="fname" name="firstname" placeholder="Your name.."> -->
+					
+				<!--	<label for="busno" style="margin-left:100px">Bus No</label>-->
+					<textarea class="dataedit" name="busno" type="text" id="busno" rows="2" cols="25" required placeholder="Enter Bus No here...." style="margin-left:140px;margin-top:10px"></textarea><br>
+
+					<label for="detail" style="margin-left:30px; margin-top:50px; padding-top:50px">Route Detail</label>
+					<textarea class="dataedit" name="detail" type="text" id="detail" rows="5" cols="150" required placeholder="Detail of route...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
+				<!--	<input class="dataedit" name="description" type="text" id="description"  placeholder="Description of Schorarship...." style="margin-left:30px;margin-top:10px;margin-bottom:10px;height:50px;width:500px"></input>-->
+					
+					
+					
+					
+					
+					<label  style="margin-left:40%; margin-top:50px ; margin-right:10px" required>Time: </label>
+					
+					<input type="time" name="time" id="time">
+					
+					<button type="submit"  class="button button1" value="Add Row" style="margin-top:30px">Submit</button>
+					
+			
+			
+				<!-- Band Description 
+				<label for="country">Country</label>
+				<select id="country" name="country">
+				  <option value="australia">Australia</option>
+				  <option value="canada">Canada</option>
+				  <option value="usa">USA</option>
+				</select>-->
+		  
+		   
+				</form>
+			
+			</div>
+			
+		<!--!		 <table border="1" id="data" style="margin-left:10px; width: 100%; margin-right:10px">
+					<thead>
+						<tr>
+							
+							<th style="width:20%">Route Name</th>
+								<th style="width:10%">Bus No.</th>
+								<th style="width:45%">Detail</th>
+								<th style="width:15%">Time</th>
+								<th style="width:5%">Update</th>
+								<th style="width:5%">Delete</th>
+						</tr>
+					</thead>
+					
+				</table> 
+			<button type="button" class="delete-row">Delete Row</button>
+			
+			
+			<div class="footer">
+			
+			</div>-->
+			
+		
+
+
+
+	</div>
+	
+</div>
+
+<script>
+// Automatic Slideshow - change image every 3 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 3000);
+}
+	
+
+
+</script>
+
+<!-- For Background image -->
+<script>
+function myFunction() {
+    document.body.style.backgroundColor = "#f3f3f3";
+    document.body.style.backgroundImage = "url('https://www.digitalplatforms.co.za/wp-content/uploads/2015/11/Website-Design-Background.png')";
+}
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="/css/news.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!--For clander -->
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+</head>
+<body onload="myFunction()">
+<div>
+	 <div  >
+        <img src="/images/qau1.png" height="100px" width="700px" style="margin-left: 300px">
+        
+    </div>
+	<div onload="myFunction()">
+			<div class="nav">
+				<ul>
+				<li class="home"><a href="/page/dashbord">Dashbord</a></li>
+				<li class="Schorarship"><a  href="/page/scholarships">Schorarship</a></li>
+				<li  class="Transport"><a href="/page/transports">Transports</a></li>
+				<li class="news"><a href="/page/dining">Dining</a></li>
+				<li class="contact"><a href="/page/notification">Notification</a></li>
+				<li class="contact"><a href="/page/events">Events</a></li>
+				<li class="contact"><a class="active" href="/page/news">News</a></li>
+				<li class="News"><a href="/page/admission">Admission</a></li>
+				<li class="contact" style="float:right"><a href="/">Logout</a></li>
+				<div class="dropdown">
+					<button class="dropbtn">Data View 
+					<i class="fa fa-caret-down"></i>
+					</button>
+					<div class="dropdown-content">
+					<a href="/page/viewscholarships">Schorarship Data</a>
+					<a href="/page/viewstransport">Transport Data</a>
+					<a href="/page/viewsdining">Dining Data</a>
+					<a href="/page/viewsevent">Events Data</a>
+					<a href="/page/viewnews">News Data</a>
+	  <a href="/page/viewadmission">Admission Data</a>
+	  <a href="/page/viewnotification">Notification Data</a>
+					</div>
+				</div> 
+			  </ul>
+			
+			</div>
+			<div class="form">
+				<h2 style="margin-left:450px">News detail Form </h2>
+				
+				<form  method="post" type="submit" action="/api/news/add" id="myForm">
+					<label for="title" style="margin-left:30px; margin-top:50px">Tilte</label>
+					<textarea class="dataedit" name="title" type="text" id="title" rows="2" cols="150"  placeholder="Tilte of News...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
+					
+					<!-- Band Description
+					<input type="text" id="fname" name="firstname" placeholder="Your name.."> -->
+
+					<label for="subtitle" style="margin-left:30px; margin-top:50px; padding-top:50px">Subtitle</label>
+					<textarea class="dataedit" name="subtitle" type="text" id="subtitle" rows="3" cols="150"  placeholder="Subtitle of News...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
+				<!--	<input class="dataedit" name="description" type="text" id="description"  placeholder="Description of Schorarship...." style="margin-left:30px;margin-top:10px;margin-bottom:10px;height:50px;width:500px"></input>-->
+					
+					
+					<label for="description" style="margin-left:30px;margin-top:30px">Description</label>
+					<textarea class="dataedit" name="description" type="text" id="description" rows="5" cols="150"  placeholder="Description of News...." style="margin-left:30px;margin-top:10px;margin-bottom:15px"></textarea>
+
+					<label for="imageurl" style="margin-left:30px;margin-top:30px">Image-URL</label>
+					<textarea class="dataedit" name="imageurl" type="text" id="imageurl" rows="2" cols="150"  placeholder="Place Image URL here...." style="margin-left:30px;margin-top:10px;margin-bottom:15px"></textarea>
+					<input type="file" name="image">
+					
+					<label  style="margin-left:35%; margin-top:50px">Last Date: </label>
+					<input id="datepicker"   />
+			<!--		<input type="date" name="lastdate"  id="lastdate"> -->
+					
+					<button type="submit"  class="button button1" value="Add Row" style="margin-top:30px">Submit</button>
+					<input type="button" class="add-row" value="Add Row">
+			
+			
+				<!-- Band Description 
+				<label for="country">Country</label>
+				<select id="country" name="country">
+				  <option value="australia">Australia</option>
+				  <option value="canada">Canada</option>
+				  <option value="usa">USA</option>
+				</select>-->
+		  
+		   
+				</form>
+			
+			</div>
+				<h1 style="margin-left:40%">Data of Schorarship</h1>
+				 <table border="1" id="data" style="margin-left:10px; width: 100%; margin-right:10px">
+					<thead>
+						<tr>
+							
+							<th style="width:15%">Title</th>
+								<th style="width:20%">Subtitle</th>
+								<th style="width:25%">Description</th>
+								<th style="width:20%">Image URL</th>
+								<th style="width:10%">Last Date</th>
+								<th style="width:5%">Update</th>
+								<th style="width:5%">Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							
+							<td>Schorarship fjsakjflasdjflkj lksdjflksdjdlkfjljf</td>
+							<td>For poor people</td>
+							<td>60 per</td>
+							<td>6-12-2017</td>
+						</tr>
+					</tbody>
+				</table>
+			<button type="button" class="delete-row">Delete Row</button>
+			
+			
+			<div class="footer">
+			
+			</div>
+			
+		
+
+
+
+	</div>
+	
+</div>
+
+<!-- For calander  -->
+<script>
+  $(document).ready(function() {
+    $("#datepicker").datepicker();
+  });
+  </script>
+
+<script>
+// Automatic Slideshow - change image every 3 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 3000);
+}
+	
+
+
+</script>
+
+<!-- For Background image -->
+<script>
+function myFunction() {
+    document.body.style.backgroundColor = "#f3f3f3";
+    document.body.style.backgroundImage = "url('https://www.digitalplatforms.co.za/wp-content/uploads/2015/11/Website-Design-Background.png')";
+}
+</script>
+
+
+</body>
+</html>
