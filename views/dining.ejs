@@ -72,20 +72,7 @@
 				</form>
 			
 			</div>
-				<h1 style="margin-left:40%">Data of Hurts</h1>
-				 <table border="1" id="data" style="margin-left:10px; width: 100%; margin-right:10px">
-					<thead>
-						<tr>
-							
-							<th style="width:30%">Hurt Name</th>
-								<th style="width:60%">Dish Name</th>
-								<th style="width:5%">Update</th>
-								<th style="width:5%">Delete</th>
-						</tr>
-					</thead>
-					
-				</table>
-			
+				
 			
 			
 			<div class="footer">
@@ -110,7 +97,7 @@ function myFunction() {
 }
 </script>
 
->
+
 
 <!-- For Background image -->
 
@@ -123,86 +110,7 @@ function myFunction() {
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		
-			<script>
-      
-populateTable();
-function populateTable(){
-        var mydata;
-        var userdata;
-      $(document).ready(function(){
-        console.log('Unable to put data');
-
-       
-                $.getJSON("http://localhost:3000/api/dining", function(data){
-                    console.log(data);
-      
-                
-               
-  
-                    $.each(data, function(i, field){
-                   
-                       $('#data').append('<tr><td>'+field.name+'</td><td>'+field.menu+
-                        '</td><td><a href="#"  class="deleteEmployee"   rel="' + this._id + '" >delete</a></td><td> <a href=""  class="btn btn-warning" onclick="Change()><span class="glyphicon glyphicon-edit"></span>Update</a></td></tr>' 
-            
-                    );
-
-                        });                      
-     
-                })
-               
-            });
-          }
-
-// function of delete
-
-
-$('#data tbody').on('click', 'td a.deleteEmployee', function deleteEmployee(event){
-
-
-    event.preventDefault();
-    // Pop up a confirmation dialog
-    var confirmation = confirm('Are you sure you want to delete this user?');
-    // Check and make sure the user confirmed
-    if (confirmation === true) {
-        // If they did, do our delete
-        $.ajax({
-            method:'DELETE',
-            type: 'DELETE',
-            url: '/api/dining/delete/'  + $(this).attr('rel'),
-
-        }).done(function( response) {
-          
-           
-          
-                      // Check for a successful (blank) response
-          
-                      if (response.msg == '') {
-                       
-          
-                      }
-          
-                      else {
-                     
-                          alert('sucessfully deleted!');
-                        
-          
-                      }
-
-});
-}else {
-
-// If they said no to the confirm, do nothing
-
-        return false;
-
-    }
-})
-
-
-
-			</script>
-			
-
+		
 
 </body>
 </html>

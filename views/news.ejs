@@ -48,7 +48,7 @@
 			<div class="form">
 				<h2 style="margin-left:450px">News detail Form </h2>
 				
-				<form  method="post" type="submit" action="/api/news/add" id="myForm">
+				<form  method="post" type="submit" action="/api/news/add" id="myForm" enctype="multipart/form-data">
 					<label for="title" style="margin-left:30px; margin-top:50px">Tilte</label>
 					<textarea class="dataedit" name="title" type="text" id="title" rows="2" cols="150"  placeholder="Tilte of News...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
 					
@@ -63,16 +63,24 @@
 					<label for="description" style="margin-left:30px;margin-top:30px">Description</label>
 					<textarea class="dataedit" name="description" type="text" id="description" rows="5" cols="150"  placeholder="Description of News...." style="margin-left:30px;margin-top:10px;margin-bottom:15px"></textarea>
 
-					<label for="imageurl" style="margin-left:30px;margin-top:30px">Image-URL</label>
-					<textarea class="dataedit" name="imageurl" type="text" id="imageurl" rows="2" cols="150"  placeholder="Place Image URL here...." style="margin-left:30px;margin-top:10px;margin-bottom:15px"></textarea>
-					<input type="file" name="image">
+					<!-- <label for="imageurl" style="margin-left:30px;margin-top:30px">Image-URL</label>
+					<textarea class="dataedit" name="imageurl" type="text" id="imageurl" rows="2" cols="150"  placeholder="Place Image URL here...." style="margin-left:30px;margin-top:10px;margin-bottom:15px"></textarea> -->
+					<!-- <input type="file" name="image"> -->
+
+					<div class="col-25">
+							<label for="color" style="margin-left:30px; margin-top:50px; padding-top:50px">Image</label>
+						  </div>
+	
+						   <div class="col-75">
+							<input type=file name="userFile"  id="userFile" required="required" style="margin-left:30px;margin-top:10px;margin-bottom:15px">
+						  </div>
 					
 					<label  style="margin-left:35%; margin-top:50px">Last Date: </label>
 					<input id="datepicker"   />
 			<!--		<input type="date" name="lastdate"  id="lastdate"> -->
 					
 					<button type="submit"  class="button button1" value="Add Row" style="margin-top:30px">Submit</button>
-					<input type="button" class="add-row" value="Add Row">
+					
 			
 			
 				<!-- Band Description 
@@ -87,33 +95,7 @@
 				</form>
 			
 			</div>
-				<h1 style="margin-left:40%">Data of Schorarship</h1>
-				 <table border="1" id="data" style="margin-left:10px; width: 100%; margin-right:10px">
-					<thead>
-						<tr>
-							
-							<th style="width:15%">Title</th>
-								<th style="width:20%">Subtitle</th>
-								<th style="width:25%">Description</th>
-								<th style="width:20%">Image URL</th>
-								<th style="width:10%">Last Date</th>
-								<th style="width:5%">Update</th>
-								<th style="width:5%">Delete</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							
-							<td>Schorarship fjsakjflasdjflkj lksdjflksdjdlkfjljf</td>
-							<td>For poor people</td>
-							<td>60 per</td>
-							<td>6-12-2017</td>
-						</tr>
-					</tbody>
-				</table>
-			<button type="button" class="delete-row">Delete Row</button>
-			
-			
+				
 			<div class="footer">
 			
 			</div>

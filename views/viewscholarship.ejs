@@ -8,8 +8,16 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-<!-- For search  -->
+<!-- For search  and paging -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="CSS/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="CSS/dataTables.bootstrap.css">
+    
+   <link rel="stylesheet" type="text/css" href="CSS/Style.css">
+ <script type="text/javascript" src="JS/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="JS/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="JS/dataTables.bootstrap.js"></script>
 
 </head>
 <body >
@@ -55,15 +63,18 @@
 				<h1 style="margin-left:40%">Data of Schorarship</h1>
 				
 			
-			
-		<table id="data" class="responstable" style="width:100%; margin-left:10px; margin-right:50px;" >
-    <tr>
-    <th width="5%">title</th>
-    <th width="5%">requirement</th>
-    <th width="5%">description</th>
-    <th width="5%">date</th>
-    <th width="5%">Update</th>
-    <th width="5%">Delete</th>
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for title.." title="Type in a name"
+                style=" margin-top:auto"; width="70px"
+                >
+
+		<table id="data" class="responstable,table table-striped table-bordered" style="width:100%; margin-left:auto; margin-right:auto;" >
+                    <tr>
+                    <th width="20%">title</th>
+                    <th width="30%">requirement</th>
+                    <th width="30%">description</th>
+                    <th width="10%">date</th>
+                    <th width="5%">Update</th>
+                    <th width="5%">Delete</th>
  
 </tr>
         </table>
@@ -157,6 +168,39 @@ function populateTable(){
     }
 })
 </script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#data').dataTable({
+            "iDisplayLength": 5,
+            "lengthMenu": [5,10, 25, 50, 100]
+        });
+    });
+</script>
+
+
+
+
+<script>
+        function myFunction() {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("data");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }       
+          }
+        }
+        </script>
 
 
 

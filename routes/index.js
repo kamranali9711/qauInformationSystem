@@ -79,6 +79,13 @@ app.get('/page/viewnews', function(req, res) {
  app.get('/page/viewnotification',function(req, res){
    res.render('viewnotification');
  });
+
+ app.get('/page/test',function(req, res){
+  res.render('testtable');
+});
+
+
+
  app.use(express.static('public'));
 app.use('/public',express.static('public'));
 };

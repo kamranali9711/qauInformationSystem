@@ -13,7 +13,7 @@ router.delete('/user/:id', user.delete);
 var events = require('../api/events.js');
 router.post('/events/add', events.add);
 router.get('/events', events.getAll);
-router.post('/events/uploadimage', events.uploads);
+//router.post('/events/uploadimage', events.uploads);
 router.delete('/events/delete/:id', events.delete);
 router.put('/events/edit/:id', events.edit);
 
@@ -37,9 +37,9 @@ router.put('/admission/edit/:id',admission.edit);
 //Define routes for News
 var news = require('../api/news.js');
 router.post('/news/add', news.add);
-// router.get('/events', events.getAll);
+ router.get('/news', events.getAll);
 // router.post('/events/uploadimage', events.uploads);
-// router.delete('/events/delete/:id', events.delete);
+ router.delete('/news/delete/:id', events.delete);
 // router.put('/events/edit/:id', events.edit);
 
 
