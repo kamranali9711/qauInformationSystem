@@ -37,9 +37,9 @@ router.put('/admission/edit/:id',admission.edit);
 //Define routes for News
 var news = require('../api/news.js');
 router.post('/news/add', news.add);
- router.get('/news', events.getAll);
+ router.get('/news', news.getAll);
 // router.post('/events/uploadimage', events.uploads);
- router.delete('/news/delete/:id', events.delete);
+ router.delete('/news/delete/:id', news.delete);
 // router.put('/events/edit/:id', events.edit);
 
 

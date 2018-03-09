@@ -67,18 +67,7 @@
                             </tr>
                             </thead>
 
-                            <% for( var i=0;i<myjson.length;i++){ %>
-                                    <tr onclick="javascript:showRow(this,'<%=store[i].image%>');">
-                                      <td ><img height="100" width= "100" class="w3-circle w3-btn w3-white w3-border w3-border-red w3-round-large" src=<%= store[i].image %>></td>
-                                      <td ><%= myjson[i].route %></td>
-            
-                                          <td ><%= myjson[i].detail %></td>
-            
-                                          <td ><%= myjson[i].time %></td>
-                                    
-                                          <!-- <td><a href='/removeStoreItem/<%=store[i]._id%>/delete'><i class="fa fa-trash-o" aria-hidden="true"></i></a></td> -->
-                                        </tr>
-                                        <% } %>
+
                             </table>
 
 
@@ -158,6 +147,16 @@
 
 
                          <!-- Necessary Plugins-->
+
+                         <script>
+                          var myjson;
+                          $.getJSON("http://localhost:3000/api/routes", function(json){
+                          myjson = json;
+                          console.log(myjson);
+              });
+                      
+                      </script>
+              
                           <script>
               function myFunction() {
                 var input, filter, table, tr, td, i;
@@ -223,15 +222,7 @@
         }
         </script>
        
-        <script>
-            var myjson;
-            $.getJSON("http://localhost:3000/api/routes", function(json){
-            myjson = json;
-            console.log(myjson);
-});
         
-        </script>
-
 
 
 <!-- 
