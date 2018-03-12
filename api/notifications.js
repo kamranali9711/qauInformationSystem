@@ -15,7 +15,9 @@ exports.add= function(req, res){
             res.json({msg: 'Failed to add the notifications'});
         }
         else{
-            res.json({msg: 'notifications is added successfully'});
+            // res.json({msg: 'notifications is added successfully'});
+            res.render('notification',{x:notifications});
+            // res.render("notification")
         }
     });
 }

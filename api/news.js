@@ -44,7 +44,10 @@ var storage = multer.diskStorage({
             console.log(error);
       }else{
           //  res.json({msg: 'Event is added in database'});
-          console.log("data is insert")
+        //   console.log("data is insert");
+        res.render("news");
+        // res.render("news");
+        // res.render('news');
             // res.render("events");
           //    console.log(result);
           }

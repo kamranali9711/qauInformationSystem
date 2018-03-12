@@ -1,29 +1,98 @@
 const exprss = require('express');
-const Admission = require('../models/admission.js');
+// const Admission = require('../models/admission.js');
+const driver = require('../models/admission.js');
+
+
+
+// exports.add= function(req, res){
+//     let newAdmission = new Admission({
+//         discipline: req.body.discipline,
+//         requirement: req.body.requirement,
+//         lastdate: req.body.lastdate
+//     });
+
+//     newAdmission.save((err, admission)=>{
+//         if(err){
+//             res.json({msg: 'Failed to add the notifications'});
+//         }
+//         else{
+//             // res.json({msg: 'notifications is added successfully'});
+//             res.render("admission");
+//             // res.render("notification")
+//         }
+//     });
+// }
+
+
+// exports.add= function(req, res){
+//     let newAdmission = new Admission({
+//         discipline: req.body.discipline,
+//         requirement: req.body.requirement,
+//         lastdate: req.body.lastdate
+//     });
+
+//     newAdmission.save((err, admission)=>{
+//         if(err){
+//             res.json({msg: 'Failed to add the Scholarship'});
+//         }
+//         else{
+//             // res.render("scholarship");
+//             // res.json({msg: 'notifications is added successfully'});
+//             res.render("admission");
+//         }
+//     });
+// }
+
+
+
+exports.add = function(req,res){
+    console.log(req.body);
+    driver.create({
+      discipline:req.body.discipline,
+      requirement : req.body.requirement,
+      lastdate : req.body.lastdate,
+    }).then(function(result){
+      console.log("Admission Details added successfully");
+      driver.find({}).exec(function(error,result){
+          if(error){
+            console.log(error);
+            res.status(500).send({error:error});
+          }else{
+            res.set('Content-Type', 'application/javascript');
+            res.render('allDrivers', {
+                driver:result
+            });
+          }
+        })
+  
+    })
+  }
 
 
 //function is used to post data in database
-exports.add= function(req, res){
-    let newAdmission = new Admission({
-        discipline: req.body.discipline,
-        requirement: req.body.requirement,
-        lastdate: req.body.lastdate
-    });
+// exports.add= function(req, res){
+//     let newAdmission = new Admission({
+//         discipline: req.body.discipline,
+//         requirement: req.body.requirement,
+//         lastdate: req.body.lastdate
+//     });
 
-    newAdmission.save((err, admission)=>{
-        if(err){
-            res.json({msg: 'Failed to add the notifications'});
-        }
-        else{
-            res.json({msg: 'notifications is added successfully'});
-        }
-    });
-}
+//     newAdmission.save((err, admission)=>{
+//         if(err){
+//             res.json({msg: 'Failed to add the Admission'});
+//         }
+//         else{
+//             // res.json({msg: 'Admission is added successfully'});
+//             // res.resder("admission");
+//             res.render("admission");
+//         }
+//     });
+// }
 
 
 //function is used to get all scholarship detail 
 exports.getAll = function (req, res) {
-    Admission
+    driver
         .find({})
         .exec(function (error, route) {
             if (error) {
@@ -40,7 +109,7 @@ exports.getAll = function (req, res) {
 
 //function is used to delete Admission from database
 exports.delete = function(req, res, next){
-    Admission.remove({_id: req.params.id},function(err, result){
+    driver.remove({_id: req.params.id},function(err, result){
         if(err){
             res.json(err);
         }
@@ -57,12 +126,12 @@ exports.edit=function(req,res){
       message:'one or more perameters missing'
     });
   }else{
-    Scholarship.findOne({_id:req.params.id}).exec(function(error,Admission){
+    Scholarship.findOne({_id:req.params.id}).exec(function(error,driver){
     //  console.log(Admission);
-      Admission.title=req.body.title?req.body.title:Admission.title;
-      Admission.requirement=req.body.requirement?req.body.requirement:Admission.requirement;     
-      Admission.lastdate=req.body.lastdate?req.body.lastdate:Admission.lastdate;           
-      Admission.save(function(error,Admission){
+      driver.title=req.body.title?req.body.title:driver.title;
+      driver.requirement=req.body.requirement?req.body.requirement:driver.requirement;     
+      driver.lastdate=req.body.lastdate?req.body.lastdate:driver.lastdate;           
+      driver.save(function(error,driver){
         if(error){
           res.status('500').send({message:'error found'})
         }else{

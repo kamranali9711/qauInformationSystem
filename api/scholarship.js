@@ -17,7 +17,8 @@ exports.add= function(req, res){
         }
         else{
             // res.render("scholarship");
-            res.json({msg: 'notifications is added successfully'});
+            // res.json({msg: 'notifications is added successfully'});
+            res.render("scholarship");
         }
     });
 }

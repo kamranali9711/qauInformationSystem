@@ -1,4 +1,5 @@
 // import external moduels ==========================================================================
+var app = require('express')();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -13,6 +14,8 @@ var path = require('path');
 // const User = require('./models/user.js');
 const cookieParser = require('cookie-parser');
 
+app.use(cookieParser());
+
 
 
 const route = require('./routes/routes');
@@ -24,7 +27,7 @@ var routes = require('./routes/index.js');
 //const app = require('./routes/index');
 
 // initialize variables ==============================================================================
-var app = express();
+
 var port = process.env.PORT || 3000;
 
 
@@ -123,6 +126,14 @@ app.use('/public',express.static('public'));
 app.get('*', (req, res) => res.status(404).send({error:'page not found'}));
 
 app.listen(port, () => console.log('Server is live on port : ', port));
+
+
+
+
+
+
+
+
 
 
 // var express = require('express');

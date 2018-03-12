@@ -78,7 +78,9 @@ exports.add = function(req,res){
             console.log(error);
       }else{
           //  res.json({msg: 'Event is added in database'});
-            res.render("events");
+          res.render("events");
+          // res.render("events");
+            // res.render('events');
           //    console.log(result);
           }
         });

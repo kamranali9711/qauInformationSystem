@@ -84,6 +84,10 @@ app.get('/page/viewnews', function(req, res) {
   res.render('testtable');
 });
 
+app.get('/page/driver',function(req, res){
+  res.render('allDrivers');
+});
+
 
 
  app.use(express.static('public'));
