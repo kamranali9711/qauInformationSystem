@@ -2,6 +2,22 @@ const exprss = require('express');
 const Scholarship = require('../models/scholarship.js');
 
 
+exports.openScholarship=function(req,res){
+    console.log("check1");
+  
+  res.render('scholarship',{scholarship:1234});
+  }
+
+exports.viewScholarship = function(req,res){
+    Scholarship.find({}).exec(function(error,result){
+      if(error){
+        res.status(500).send({error:error});
+      }else{
+            res.render('viewscholarship',{scholarship:result});
+      }
+    })
+
+  }
 
 exports.add= function(req, res){
     let newScholarship = new Scholarship({
@@ -18,7 +34,7 @@ exports.add= function(req, res){
         else{
             // res.render("scholarship");
             // res.json({msg: 'notifications is added successfully'});
-            res.render("scholarship");
+            res.render("scholarship",{scholarship:scholarship});
         }
     });
 }
@@ -68,7 +84,10 @@ exports.delete = function(req, res, next){
             res.json(err);
         }
         else{
-            res.json(result);
+            Scholarship.find({}).then(function(result){
+                res.render("viewscholarship",{scholarship:result});
+            })
+            // res.json(result);
         }
     });
 }

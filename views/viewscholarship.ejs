@@ -76,7 +76,19 @@
                     <th width="5%">Update</th>
                     <th width="5%">Delete</th>
  
-</tr>
+                    </tr>
+                    <%for(var i=0;i<scholarship.length;i++){%>
+                    
+                      <tr>
+                      <td width="20%"><%=scholarship[i].title%></td>
+                      <td width="30%"><%=scholarship[i].requirement%></td>
+                      <td width="30%"><%=scholarship[i].description%></td>
+                      <td width="10%"><%=scholarship[i].date%></td>
+                      <td width="5%"><a href='/api/scholarship/edit/<%=scholarship[i]._id %>'><button style="background-color:#00FF00;border-radius:4px;" >Update</button></a></td>
+                      <td width="5%"><a  href='/api/scholarship/delete/<%=scholarship[i]._id %>'><button style="background-color:#FF0000;border-radius:4px;">Delete</button></a></td>
+    
+                  </tr>
+                    <%}%>
         </table>
 
 

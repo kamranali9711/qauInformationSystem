@@ -14,23 +14,27 @@ var events = require('../api/events.js');
 router.post('/events/add', events.add);
 router.get('/events', events.getAll);
 //router.post('/events/uploadimage', events.uploads);
-router.delete('/events/delete/:id', events.delete);
-router.put('/events/edit/:id', events.edit);
+router.get('/events/delete/:id', events.delete);
+router.get('/events/edit/:id', events.edit);
 
 //Define routes for notification
 var notification = require('../api/notifications.js');
 router.post('/notification/add', notification.add);
 router.get('/notification',notification.getAll);
-router.delete('/notification/delete/:id',notification.delete);
-router.put('/notification/edit/:id',notification.edit);
+router.get('/notification/delete/:id',notification.delete);
+router.get('/notification/edit/:id',notification.edit);
+router.post('/notification/editNotification',notification.editNotification);
+
+
 
 
 //Define routes for Admission
 var admission = require('../api/admission.js');
 router.post('/admission/add', admission.add);
 router.get('/admission',admission.getAll);
-router.delete('/admission/delete/:id',admission.delete);
-router.put('/admission/edit/:id',admission.edit);
+router.get('/admission/delete/:id',admission.delete);
+router.get('/admission/edit/:id',admission.edit);
+router.post('/admission/editAdmission',admission.editAdmission);
 
 
 
@@ -39,7 +43,7 @@ var news = require('../api/news.js');
 router.post('/news/add', news.add);
  router.get('/news', news.getAll);
 // router.post('/events/uploadimage', events.uploads);
- router.delete('/news/delete/:id', news.delete);
+ router.get('/news/delete/:id', news.delete);
 // router.put('/events/edit/:id', events.edit);
 
 
@@ -47,16 +51,16 @@ router.post('/news/add', news.add);
 var routes = require('../api/transport.js');
 router.post('/routes/add',routes.add);
 router.get('/routes', routes.getAll);
-router.delete('/routes/delete/:id', routes.delete);
-router.put('/routes/edit/:id', routes.edit);
+router.get('/routes/delete/:id', routes.delete);
+router.get('/routes/edit/:id', routes.edit);
 
 
 //Define the routes for Dining
 var dining = require('../api/dining.js');
 router.post('/dining/add',dining.add);
 router.get('/dining', dining.getAll);
-router.delete('/dining/delete/:id', dining.delete);
-router.put('/dining/edit/:id', dining.edit);
+router.get('/dining/delete/:id', dining.delete);
+router.get('/dining/edit/:id', dining.edit);
 
 
 //Define the routes for Departments
@@ -71,8 +75,8 @@ router.put('/department/edit/:id', department.edit);
 var scholarship = require('../api/scholarship.js');
 router.post('/scholarship/add',scholarship.add);
 router.get('/scholarship', scholarship.getAll);
-router.delete('/scholarship/delete/:id', scholarship.delete);
-router.put('/scholarship/edit/:id', scholarship.edit);
+router.get('/scholarship/delete/:id', scholarship.delete);
+router.get('/scholarship/edit/:id', scholarship.edit);
 
 //Define the routes for Departments
 var hurt = require('../api/programs.js');

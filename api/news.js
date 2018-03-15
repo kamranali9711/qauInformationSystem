@@ -10,6 +10,23 @@ const multer = require('multer');
 const uploads = multer({dest: './uploads'});
 const Events = require('../models/news.js');
 
+exports.openNews = function(req, res){
+    res.render("news");
+}
+
+exports.viewNews = function(req, res){
+    Events.find({}).exec(function(error, result){
+        if(error){
+            res.status(500).send({error:error});
+        }
+        else{
+            res.render("viewnews",{news:result});
+        }
+    });
+}
+
+
+
 var storage = multer.diskStorage({
     destination: function (req, file, callback) {
       callback(null, './uploads')
@@ -45,7 +62,7 @@ var storage = multer.diskStorage({
       }else{
           //  res.json({msg: 'Event is added in database'});
         //   console.log("data is insert");
-        res.render("news");
+        res.render("news",{news:result});
         // res.render("news");
         // res.render('news');
             // res.render("events");
@@ -65,7 +82,10 @@ exports.delete = function(req, res, next){
             res.json(err);
         }
         else{
-            res.json(result);
+            // res.json(result);
+            Events.find({}).then(function(result){
+                res.render("viewnews",{news:result});
+            })
         }
     });
 }

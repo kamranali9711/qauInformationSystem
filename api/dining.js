@@ -1,6 +1,28 @@
 const exprss = require('express');
 const Dining = require('../models/dining.js');
 
+
+
+exports.openDining=function(req,res){
+    console.log("check1");
+  
+  res.render('dining',{dining:1234});
+  }
+
+exports.viewDining = function(req,res){
+    Dining.find({}).exec(function(error,result){
+      if(error){
+        res.status(500).send({error:error});
+      }else{
+          console.log(result);
+            res.render('viewdining',{dining:result});
+            
+      }
+    })
+
+  }
+  
+
 exports.add= function(req, res){
     let newDining = new Dining({
         name: req.body.name,
@@ -13,7 +35,7 @@ exports.add= function(req, res){
         }
         else{
             
-            res.render("dining");
+            res.render("dining",{dining:dining});
           //  res.json({msg: 'dining is added successfully'});
         }
     });
@@ -44,7 +66,10 @@ exports.delete = function(req, res, next){
             res.json(err);
         }
         else{
-            res.json(result);
+            Dining.find({}).then(function(result){
+                res.render("viewdining",{dining:result});
+            })
+            // res.json(result);
         }
     });
 }

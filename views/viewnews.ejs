@@ -50,16 +50,31 @@
 		
 				<h1 style="margin-left:40%">Data of News</h1>
 		<table id="data" class="responstable" style="width:100%; margin-left:auto; margin-right:auto;" >
-    <tr>
-    <th width="10%">title</th>
-    <th width="20%">subtitle</th>
-    <th width="35%">description</th>
-    <th width="5%">date</th>
-    <th width="20%">imageurl</th>
-	<th width="5%">Update</th>
-    <th width="5%">Delete</th>
- 
-</tr>
+                <tr>
+                <th width="10%">title</th>
+                <th width="20%">subtitle</th>
+                <th width="35%">description</th>
+                <th width="5%">date</th>
+                <th width="20%">imageurl</th>
+                <th width="5%">Update</th>
+                <th width="5%">Delete</th>
+            
+            </tr>
+
+            <%for(var i=0;i<news.length;i++){%>
+                    
+                <tr>
+                <td width="15%"><%=news[i].title%></td>
+                <td width="30%"><%=news[i].subtitle%></td>
+                <td width="10%"><%=news[i].description%></td>
+                <td width="10%"><%=news[i].imageurl%></td>
+                <td width="10%"><%=news[i].date%></td>
+                <td width="5%"><a href='/api/news/edit/<%=news[i]._id %>'><button style="background-color:#00FF00;border-radius:4px;" >Update</button></a></td>
+                <td width="5%"><a  href='/api/news/delete/<%=news[i]._id %>'><button style="background-color:#FF0000;border-radius:4px;">Delete</button></a></td>
+
+            </tr>
+              <%}%>
+
         </table>
 	</div>
 	

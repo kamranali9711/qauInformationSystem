@@ -22,15 +22,15 @@
 
 </style>
 </head>
-<body onload="myFunction()" >
-<div onload="myFunction()">
+<body onload="myFunction()">
+<div>
 	
-		 <div onload="myFunction()" >
+		 <div  >
         <img src="/images/qau1.png" height="100px" width="700px" style="margin-left: 300px">
         
     </div>
-	<div >
-			<div class="nav" onload="myFunction()">
+	<div onload="myFunction()">
+			<div class="nav">
 				<ul >
 				<li class="Dashbord"><a href="/page/dashbord">Dashbord</a></li>
 				<li class="Schorarship"><a  href="/page/scholarships">Schorarship</a></li>
@@ -39,7 +39,7 @@
 				<li class="Program"><a  href="/page/notification">Notification</a></li>
 				<li class="Events"><a href="/page/events">Events</a></li>
 				<li class="News"><a href="/page/news">News</a></li>
-				<li class="News"><a class="active"  href="/page/admission">Admission</a></li>
+				<li class="News"><a class="active" href="/page/admission">Admission</a></li>
 				<li class="Logout" style="float:right"><a href="/">Logout</a></li>
 				<div class="dropdown">
 					<button class="dropbtn">Data View 
@@ -51,8 +51,8 @@
 					<a href="/page/viewsdining">Dining Data</a>
 					<a href="/page/viewsevent">Events Data</a>
 					<a href="/page/viewnews">News Data</a>
-	  <a href="/page/viewadmission">Admission Data</a>
-	  <a href="/page/viewnotification">Notification Data</a>
+					<a href="/page/viewadmission">Admission Data</a>
+					<a href="/page/viewnotification">Notification Data</a>
 					</div>
 				</div> 
 				
@@ -60,21 +60,20 @@
 			  </ul>
 			
 			</div>
-			<%console.log(x)%>
 			<div class="form">
+				<h2 style="margin-left:450px">Notification detail Form </h2>
 				
-				<h2 style="margin-left:450px">Admission detail Form </h2>
-				
-				<form  method="POST" id="form"  name="myForm" type="submit" action="/api/admission/add">
+				<%console.log(admissions)%>
+				<form  method="post" id="form"  name="myForm" type="submit" action="/api/admission/add">
 					<label for="fname" style="margin-left:30px; margin-top:50px">Discipline</label>
-					<textarea class="dataedit" name="title" type="text" id="title" rows="2" cols="150" required placeholder="Discipline for Admission...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
+					<textarea class="dataedit" name="discipline" type="text" id="discipline" rows="2" cols="150" required placeholder="discipline of Notification...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
 					
 					<!-- Band Description
 					<input type="text" id="fname" name="firstname" required placeholder="Your name.."> -->
 
 					
 					<label for="lname" style="margin-left:30px; margin-top:50px; padding-top:50px">Requirement</label>
-					<textarea class="dataedit" name="description" type="text" id="description" rows="5" cols="150" required placeholder="Requirement/cretria for Admission...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
+					<textarea class="dataedit" name="requirement" type="text" id="requirement" rows="5" cols="150" required placeholder="requirement of Notification...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
 
 					
 					<label  style="margin-left:35%; margin-top:50px">Last Date: </label>
@@ -86,6 +85,8 @@
 					
          
 			
+			
+				</select>
 		  
 		   
 				</form>
@@ -94,13 +95,11 @@
 			
 			</div>
 	</div>
-
-	<div class="footer">
-			
-		</div>
 	
 </div>
-
+<div class="footer">
+			
+	</div>
 
 <!-- Band Description -->
 
@@ -112,12 +111,37 @@
   </script>
 
 
+<!-- For Background image -->
 <script>
 function myFunction() {
     document.body.style.backgroundColor = "#f3f3f3";
     document.body.style.backgroundImage = "url('https://www.digitalplatforms.co.za/wp-content/uploads/2015/11/Website-Design-Background.png')";
+	  var mydata;
+    var userdata;
+    var id;
+  $(document).ready(function(){
+
+            $.getJSON("http://localhost:3000/api/scholarship", function(data){
+                
+                $.each(data, function(i, field){
+                  userdata = data;
+                     
+                   $('#myTable').append('<tr><td>'+field.title+'</td><td>'+field.requirement+'</td><td>'+field.description+'</td><td>'+field.date+'</td><td><button>Update</button></td><td><button onclick="get()"  >Delete</button></td></tr>');
+                     /*mydata= field.title + field.requirement + field.description + field.date;*/
+                    
+                    });
+
+ 
+            })
+        });
+
 
 }
+
+
+
+
+
 </script>
 
 

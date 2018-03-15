@@ -48,7 +48,7 @@
 			  </ul>
 			
 			</div>
-		
+                
 				<h1 style="margin-left:40%">Data of Dining</h1>
                 <table id="data" class="responstable" style="width:80%; margin-left:auto; margin-right:auto;" >
                         <tr>
@@ -56,14 +56,25 @@
                         <th width="50%">menu</th>
                         <th width="5%">Update</th>
                         <th width="5%">Delete</th>
-                    
                     </tr>
+                    <%console.log(dining)%>
+                    <%for(var i=0;i<dining.length;i++){%>
+                    
+                        <tr>
+                        <td width="20%"><%=dining[i].name%></td>
+                        <td width="50%"><%=dining[i].menu%></td>
+                        
+                        <td width="5%"><a href='/api/dining/edit/<%=dining[i]._id %>'><button style="background-color:#00FF00;border-radius:4px;" >Update</button></a></td>
+                        <td width="5%"><a  href='/api/dining/delete/<%=dining[i]._id %>'><button style="background-color:#FF0000;border-radius:4px;">Delete</button></a></td>
+      
+                    </tr>
+                      <%}%>
         </table>
 				
 	</div>
 	
 </div>
-<script>
+<!-- <script>
 
 populateTable();
 function populateTable(){
@@ -96,7 +107,7 @@ function populateTable(){
 
 
  
-	</script>
+	</script> -->
 
 
 <script>

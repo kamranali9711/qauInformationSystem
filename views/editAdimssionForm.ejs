@@ -51,8 +51,8 @@
 					<a href="/page/viewsdining">Dining Data</a>
 					<a href="/page/viewsevent">Events Data</a>
 					<a href="/page/viewnews">News Data</a>
-					<a href="/page/viewadmission">Admission Data</a>
-					<a href="/page/viewnotification">Notification Data</a>
+	  <a href="/page/viewadmission">Admission Data</a>
+	  <a href="/page/viewnotification">Notification Data</a>
 					</div>
 				</div> 
 				
@@ -62,34 +62,28 @@
 			</div>
 			<div class="form">
 				<h2 style="margin-left:450px">Notification detail Form </h2>
-				<%=notification%>
 				
-				<form  method="post" id="form"  name="myForm" type="submit" action="/api/notification/add">
-					<label for="fname" style="margin-left:30px; margin-top:50px">Title</label>
-					<textarea class="dataedit" name="title" type="text" id="title" rows="2" cols="150" required placeholder="Title of Notification...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
+				
+				<form  method="post" id="form"  name="myForm" type="submit" action="/api/admission/editAdmission">
+                    <input type="text" id="id" name="id" value=<%=admissions._id%>  </input>
+                    <label for="fname" style="margin-left:30px; margin-top:50px">Title</label>
+					<input type="text" id="title" name="title" value=<%=admissions.discipline%>  </input>
 					
-					<!-- Band Description
-					<input type="text" id="fname" name="firstname" required placeholder="Your name.."> -->
 
 					
 					<label for="lname" style="margin-left:30px; margin-top:50px; padding-top:50px">Description</label>
-					<textarea class="dataedit" name="description" type="text" id="description" rows="5" cols="150" required placeholder="Description of Notification...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
+					<input type="text" id="description" name="description" value=<%=admissions.requirement%> </input>
 
 					
 					<label  style="margin-left:35%; margin-top:50px">Last Date: </label>
-					 <input id="datepicker" name="lastdate" id="lastdate"  required />
-			<!--		<input type="date" name="lastdate" id="lastdate" required> -->
+					 <input  id="datepicker" name="lastdate" id="lastdate" value=<%=admissions.lastdate%>  required />
+			
 
 					
-					<button type="submit"  class="button button1"  style="margin-top:30px">Submit</button>
+					<button type="submit" value="submit"  class="button button1"  style="margin-top:30px">Submit</button>
 					
-         
-			
-			
-				</select>-->
-		  
-		   
-				</form>
+                </form>
+               
                 
      
 			

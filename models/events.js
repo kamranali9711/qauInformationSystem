@@ -6,7 +6,7 @@ var eventSchema = new mongoose.Schema({
     subtitle:{type:String, required:false},
     description: {type:String, required:true},
     
-    date:{type:Date, required:true,default:Date.now()},
+    date:{type:String, required:false,default:Date.now()},
     imageurl: {type:String, required:false}
 });
 

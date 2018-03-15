@@ -62,12 +62,33 @@
                     <th width="5%">Delete</th>
                 
                 </tr>
+
+                <%for(var i=0;i<notification.length;i++){%>
+                    
+                    <tr>
+                    <td width="15%"><%=notification[i].title%></td>
+                    <td width="30%"><%=notification[i].description%></td>
+                    <td width="10%"><%=notification[i].lastdate%></td>
+                    <td width="5%"><a href='/api/notification/edit/<%=notification[i]._id %>'><button style="background-color:#00FF00;border-radius:4px;" >Update</button></a></td>
+                    <td width="5%"><a  href='/api/notification/delete/<%=notification[i]._id %>'><button style="background-color:#FF0000;border-radius:4px;">Delete</button></a></td>
+  
+                </tr>
+                  <%}%>
+  
+
         </table>
 				
-	</div>
+    </div>
+   
+    
 	
 </div>
-<script>
+
+
+
+
+        
+<!-- <script>
 
 populateTable();
 function populateTable(){
@@ -102,7 +123,7 @@ function populateTable(){
 
  
 	</script>
-
+ -->
 
 <script>
 	$('#data tbody').on('click', 'td a.deletetransport', function deletetransport(event){

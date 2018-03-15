@@ -1,6 +1,14 @@
  var express = require('express');
  var app = express();
 
+ var notification = require('../api/notifications.js');
+ var admission = require('../api/admission.js');
+ var dining = require('../api/dining.js');
+ var scholarship = require('../api/scholarship.js');
+ var transport = require('../api/transport.js');
+ var news = require('../api/news.js');
+ var event = require('../api/events.js');
+
 
 
 // //////Set All Routes For Fronthand
@@ -21,64 +29,39 @@ app.get('/page/dashbord', function(req, res) {
    res.render('dashboard');
  });
 
- app.get('/page/transports', function(req, res) {
-    
-   res.render('transport');
- });
+ app.get('/page/transports',transport.openTransport);
 
-  app.get('/page/scholarships', function(req, res) {
-   res.render('scholarship');
- });
+  app.get('/page/scholarships',scholarship.openScholarship);
 
- app.get('/page/dining', function(req, res) {
-   res.render('dining');
- });
+ app.get('/page/dining',dining.openDining);
 
- app.get('/page/news', function(req, res) {
-   res.render('news');
- });
+ app.get('/page/news',news.openNews);
 
- app.get('/page/events', function(req, res) {
-   res.render('events');
- });
+ app.get('/page/events', event.openEvent);
 
- app.get('/page/viewscholarships', function(req, res) {
-   res.render('viewscholarship');
- });
+ app.get('/page/viewscholarships',scholarship.viewScholarship);
 
-app.get('/page/viewstransport', function(req, res) {
-   res.render('viewtransport');
- });
+app.get('/page/viewstransport',transport.viewTransport);
 
- app.get('/page/viewsdining', function(req, res) {
-   res.render('viewdining');
- });
+ app.get('/page/viewsdining', dining.viewDining);
 
- app.get('/page/viewsevent', function(req, res) {
-   res.render('viewevent');
- });
+ app.get('/page/viewsevent', event.viewEvent);
 
-app.get('/page/viewnews', function(req, res) {
-   res.render('viewnews');
- });
+app.get('/page/viewnews', news.viewNews);
 
- app.get('/page/admission', function(req, res){
-   res.render('admission');
- });
+ app.get('/page/admission',admission.openAdmission);
 
 
- app.get('/page/notification',function(req, res){
-   res.render('notification');
- });
+ app.get('/page/notification',notification.openHome);
 
- app.get('/page/viewadmission',function(req, res){
-   res.render('viewadmission');
- });
+ app.get('/page/viewadmission',admission.viewAdmission);
 
  
- app.get('/page/viewnotification',function(req, res){
-   res.render('viewnotification');
- });
+//  app.get('/page/viewnotification',function(req, res){
+//    res.render('viewnotification');
+//  });
+
+app.get('/page/viewnotification',notification.viewNotification);
 
  app.get('/page/test',function(req, res){
   res.render('testtable');

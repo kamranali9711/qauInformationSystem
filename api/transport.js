@@ -1,6 +1,21 @@
 const exprss = require('express');
 const Routes = require('../models/transport.js');
 
+exports.openTransport = function(req, res){
+    res.render("transport");
+}
+
+exports.viewTransport = function(req, res){
+    Routes.find({}).exec(function(error,result){
+        if(error){
+            res.send(500).send({error:error});
+        }
+        else{
+            res.render("viewtransport",{transport:result});
+        }
+    });
+}
+
 exports.add= function(req, res){
     let newRoute = new Routes({
         route: req.body.route,
@@ -14,7 +29,7 @@ exports.add= function(req, res){
             res.json({msg: 'Failed to add the Route'});
         }
         else{
-            res.render("transport");
+            res.render("transport",{transport:route});
          //   res.json({msg: 'Route is added successfully'});
         }
     });
@@ -45,7 +60,10 @@ exports.delete = function(req, res, next){
             res.json(err);
         }
         else{
-            res.json(result);
+            Routes.find({}).then(function(result){
+                res.render("viewtransport",{transport:result});
+            })
+            // res.json(result);
         }
     });
 }

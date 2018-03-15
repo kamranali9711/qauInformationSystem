@@ -18,7 +18,34 @@
 
 </style>
 
+
+
 <style>
+
+	/* input[type=text] {
+		width:82%;
+		padding:10px;
+		
+		border:1px solid #ccc;
+		
+		font-family:raleway
+
+		}
+		#title {
+		margin-bottom: 10px;
+		background-repeat:no-repeat;
+		background-position:5px 7px
+		}
+		#description {
+		margin-bottom: 10px;
+		background-repeat:no-repeat;
+		background-position:5px 7px
+		}
+		#lastdate {
+		margin-bottom: 10px;
+		background-repeat:no-repeat;
+		background-position:5px 7px
+		} */
 
 </style>
 </head>
@@ -51,8 +78,8 @@
 					<a href="/page/viewsdining">Dining Data</a>
 					<a href="/page/viewsevent">Events Data</a>
 					<a href="/page/viewnews">News Data</a>
-					<a href="/page/viewadmission">Admission Data</a>
-					<a href="/page/viewnotification">Notification Data</a>
+	  <a href="/page/viewadmission">Admission Data</a>
+	  <a href="/page/viewnotification">Notification Data</a>
 					</div>
 				</div> 
 				
@@ -62,34 +89,35 @@
 			</div>
 			<div class="form">
 				<h2 style="margin-left:450px">Notification detail Form </h2>
-				<%=notification%>
 				
-				<form  method="post" id="form"  name="myForm" type="submit" action="/api/notification/add">
-					<label for="fname" style="margin-left:30px; margin-top:50px">Title</label>
-					<textarea class="dataedit" name="title" type="text" id="title" rows="2" cols="150" required placeholder="Title of Notification...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
+				
+				<form  method="post" id="form"  name="myForm" type="submit" action="/api/notification/editNotification">
+					<input type="text" id="id" name="id" style="width:30%;margin-left:30px"  value=<%=notification._id%>  </input>
+					<br/>
+					<label for="fname" style="margin-left:30px; margin-top:100px">Title</label>
+					<br/>
+					<input type="text" name="title" id="title" style="width:90%;margin-left:30px" name="title" value=<%=notification.title%>  </input>
+					<br/>
 					
-					<!-- Band Description
-					<input type="text" id="fname" name="firstname" required placeholder="Your name.."> -->
 
 					
-					<label for="lname" style="margin-left:30px; margin-top:50px; padding-top:50px">Description</label>
-					<textarea class="dataedit" name="description" type="text" id="description" rows="5" cols="150" required placeholder="Description of Notification...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
+					<label for="lname" style="margin-left:30px; margin-top:100px; padding-top:100px">Description</label>
+					<br/>
+					<input type="text" name="description" id="description" style="width:90%;margin-left:30px" name="description" value=<%=notification.description%> </input>
+					<br/>
 
 					
-					<label  style="margin-left:35%; margin-top:50px">Last Date: </label>
-					 <input id="datepicker" name="lastdate" id="lastdate"  required />
-			<!--		<input type="date" name="lastdate" id="lastdate" required> -->
-
-					
-					<button type="submit"  class="button button1"  style="margin-top:30px">Submit</button>
-					
-         
+					<label  style="margin-left:30px; margin-top:100px">Last Date: </label>
+					<br/>
+					 <input  id="datepicker"  name="lastdate" id="lastdate" style="width:20%;margin-left:30px" value=<%=notification.lastdate%>  required />
+					 <br/>
 			
-			
-				</select>-->
-		  
-		   
-				</form>
+
+					
+					<button type="submit" value="submit"  class="button button1"  style="margin-top:30px">Submit</button>
+					
+                </form>
+               
                 
      
 			

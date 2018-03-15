@@ -53,17 +53,29 @@
 			<h1 style="margin-left:40%">Data of Transport</h1>
 
 	<table id="data" class="table table-bordered table-striped" style="width:90%; margin-left:auto; margin-right:auto" >
-    <tr>
-    <th width="20%">route</th>
-    <th width="10%">busno</th>
-    <th width="40%">detail</th>
-    <th width="10%">time</th>
-    <th width="5%">Update</th>
-    <th width="5%">Delete</th>
- 
+            <tr>
+            <th width="20%">route</th>
+            <th width="10%">busno</th>
+            <th width="40%">detail</th>
+            <th width="10%">time</th>
+            <th width="5%">Update</th>
+            <th width="5%">Delete</th>
+        
         </tr>
+        <%for(var i=0;i<transport.length;i++){%>
+                    
+            <tr>
+            <td width="20%"><%=transport[i].route%></td>
+            <td width="40%"><%=transport[i].busno%></td>
+            <td width="10%"><%=transport[i].detail%></td>
+            <td width="10%"><%=transport[i].time%></td>
+            <td width="5%"><a href='/api/routes/edit/<%=transport[i]._id %>'><button style="background-color:#00FF00;border-radius:4px;" >Update</button></a></td>
+            <td width="5%"><a  href='/api/routes/delete/<%=transport[i]._id %>'><button style="background-color:#FF0000;border-radius:4px;">Delete</button></a></td>
+
+        </tr>
+          <%}%>
         </table>
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content"></div>
@@ -87,11 +99,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
 
-
+<!-- 
         <script>
                             $(".btn[data-target='#myModal']").click(function() {
                     var columnHeadings = $("thead th").map(function() {
@@ -118,8 +130,8 @@
         
         
         
-        </script>
-	<script>
+        </script> -->
+	<!-- <script>
 populateTable();
 function populateTable(){
         var mydata;
@@ -149,7 +161,7 @@ function populateTable(){
 
 
 
-	</script>
+	</script> -->
 
 <script>
 	$('#data tbody').on('click', 'td a.deletetransport', function deletetransport(event){
