@@ -31,17 +31,17 @@
 					<li class="News"><a href="/page/admission">Admission</a></li>
 					<li class="Logout" style="float:right"><a href="/">Logout</a></li>
 					<div class="dropdown">
-						<button class="dropbtn">Data View 
-      <i class="fa fa-caret-down"></i>
-    </button>
-						<div class="dropdown-content">
+                    <button class="dropbtn">Data View 
+                    <i class="fa fa-caret-down"></i>
+                    </button>
+                                    <div class="dropdown-content">
 							<a href="/page/viewscholarships">Schorarship Data</a>
 							<a class="active" href="/page/viewstransport">Transport Data</a>
 							<a href="/page/viewsdining">Dining Data</a>
 							<a href="/page/viewsevent">Events Data</a>
 							<a href="/page/viewnews">News Data</a>
 							<a href="/page/viewadmission">Admission Data</a>
-	  <a href="/page/viewnotification">Notification Data</a>
+	                        <a href="/page/viewnotification">Notification Data</a>
 
 						</div>
 					</div>
@@ -50,10 +50,19 @@
 				</ul>
 
 			</div>
-			<h1 style="margin-left:40%">Data of Transport</h1>
+            <h1 style="margin-left:40%">Data of Transport</h1>
+            <div class="wrap">
+                <div class="search">
+                   <input type="text" id="myInput" onkeyup="myFunction()" class="searchTerm" placeholder="What are you looking for?">
+                   <button type="submit" class="searchButton">
+                     <i class="fa fa-search"></i>
+                  </button>
+                </div>
+             </div>
 
 	<table id="data" class="table table-bordered table-striped" style="width:90%; margin-left:auto; margin-right:auto" >
-            <tr>
+        <thead>    
+        <tr>
             <th width="20%">route</th>
             <th width="10%">busno</th>
             <th width="40%">detail</th>
@@ -62,19 +71,209 @@
             <th width="5%">Delete</th>
         
         </tr>
+    </thead>
+    <tbody>
         <%for(var i=0;i<transport.length;i++){%>
                     
             <tr>
             <td width="20%"><%=transport[i].route%></td>
-            <td width="40%"><%=transport[i].busno%></td>
-            <td width="10%"><%=transport[i].detail%></td>
+            <td width="10%"><%=transport[i].busno%></td>
+            <td width="40%"><%=transport[i].detail%></td>
             <td width="10%"><%=transport[i].time%></td>
             <td width="5%"><a href='/api/routes/edit/<%=transport[i]._id %>'><button style="background-color:#00FF00;border-radius:4px;" >Update</button></a></td>
             <td width="5%"><a  href='/api/routes/delete/<%=transport[i]._id %>'><button style="background-color:#FF0000;border-radius:4px;">Delete</button></a></td>
 
         </tr>
           <%}%>
+        </tbody>
         </table>
+        <div class="page">
+                <div id="pagination" class="paginatioin" >
+                    <a href="#">&laquo;</a>
+                    <a href="#">1</a>
+                    <a class="active" href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#">&raquo;</a>
+                  </div>
+                </div>
+
+
+
+<!-- Script for Search Bar -->
+<!-- 
+<script>
+    function myFunction() {
+        $("#myInput").on("keyup", function() {
+    var value = $(this).val();
+
+    $("table tr").each(function(index) {
+        if (index !== 0) {
+
+            $row = $(this);
+
+            var id = $row.find("td:first").text();
+
+            if (id.indexOf(value) !== 0) {
+                $row.hide();
+            }
+            else {
+                $row.show();
+            }
+        }
+    });
+});
+}
+
+</script> -->
+<script>
+    function myFunction() {
+      var input, filter, table, tr, td, i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("data");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }       
+      }
+    }
+    </script>
+
+
+<!-- Script for Paging -->
+
+<script>
+        function pagination(){
+            var req_num_row=10;
+            var $tr=jQuery('tbody th');
+            var $tr=jQuery('tbody tr');
+            var total_num_row=$tr.length;
+            var num_pages=0;
+            if(total_num_row % req_num_row ==0){
+              num_pages=total_num_row / req_num_row;
+            }
+            if(total_num_row % req_num_row >=1){
+              num_pages=total_num_row / req_num_row;
+              num_pages++;
+              num_pages=Math.floor(num_pages++);
+            }
+            for(var i=1; i<=num_pages; i++){
+              jQuery('#pagination').append(" "+i+" ");
+            }
+            $tr.each(function(i){
+              jQuery(this).hide();
+              if(i+1 <= req_num_row){
+                $tr.eq(i).show();
+              }
+            
+            });
+            jQuery('#pagination a').click(function(e){
+              e.preventDefault();
+              $tr.hide();
+              var page=jQuery(this).text();
+              var temp=page-1;
+              var start=temp*req_num_row;
+              //alert(start);
+              
+              for(var i=0; i< req_num_row; i++){
+                
+                $tr.eq(start+i).show();
+              
+              }
+            });
+          }
+        jQuery('document').ready(function(){
+          pagination();
+        
+        
+        
+        });
+        
+        </script>
+    
+    
+    
+    <script type='text/javascript'>
+     
+      $(function () {
+          // Selectors for future use
+          var myTable = "#data";
+          var myTableBody = myTable + " tbody";
+          var myTableRows = myTableBody + " tr";
+          var myTableColumn = myTable + " th";
+    
+          // Starting table state
+          function initTable() {
+    
+              // Increment the table width for sort icon support
+              $(myTableColumn).each(function () {
+                  var width = $(this).width();
+                  $(this).width(width + 40);
+              });
+    
+              // Set the first column as sorted ascending
+              $(myTableColumn).eq(0).addClass("sorted-asc");
+    
+              //Sort the table using the current sorting order
+              sortTable($(myTable), 0, "asc");
+    
+          }
+    
+          // Table starting state
+          initTable();
+    
+          // Table sorting function
+          function sortTable(table, column, order) {
+              var asc = order === 'asc';
+              var tbody = table.find('tbody');
+    
+              // Sort the table using a custom sorting function by switching 
+              // the rows order, then append them to the table body
+              tbody.find('tr').sort(function (a, b) {
+                  if (asc) {
+                      return $('td:eq(' + column + ')', a).text()
+                          .localeCompare($('td:eq(' + column + ')', b).text());
+                  } else {
+                      return $('td:eq(' + column + ')', b).text()
+                          .localeCompare($('td:eq(' + column + ')', a).text());
+                  }
+              }).appendTo(tbody);
+    
+          }
+    
+          // Heading click
+          $(myTableColumn).click(function () {
+    
+              // Remove the sort classes for all the column, but not the first
+              $(myTableColumn).not($(this)).removeClass("sorted-asc sorted-desc");
+    
+              // Set or change the sort direction
+              if ($(this).hasClass("sorted-asc") || $(this).hasClass("sorted-desc")) {
+                  $(this).toggleClass("sorted-asc sorted-desc");
+              } else {
+                  $(this).addClass("sorted-asc");
+              }
+    
+              //Sort the table using the current sorting order
+              sortTable($(myTable),
+                          $(this).index(),
+                          $(this).hasClass("sorted-asc") ? "asc" : "desc");
+    
+          });
+    
+      });
+    
+    </script>
+    
         <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
             <div class="modal-dialog">
@@ -163,7 +362,7 @@ function populateTable(){
 
 	</script> -->
 
-<script>
+<!-- <script>
 	$('#data tbody').on('click', 'td a.deletetransport', function deletetransport(event){
 
 
@@ -206,7 +405,7 @@ function populateTable(){
 
     }
 })
-</script>
+</script> -->
 
 </body>
 

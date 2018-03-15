@@ -1,95 +1,338 @@
-
+<!DOCTYPE html>
 <html>
+
 <head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<link href="/css/viewscholarship.css" rel="stylesheet">
 
-        <link href="/css/viewscholarship.css" rel="stylesheet">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-	
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta http-equiv="Content-Security-Policy" content="block-all-mixed-content" />
 
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-    <meta http-equiv="Content-Security-Policy" content="block-all-mixed-content" />
-	
-        
 </head>
+
 <body >
-<div>
-	
-		 <div  >
-        <img src="/images/qau1.png" height="100px" width="700px" style="margin-left: 300px">
-        
-    </div>
-	<div >
+	<div>
+
+		<div>
+			<img src="/images/qau1.png" height="100px" width="700px" style="margin-left: 300px">
+
+		</div>
+		<div >
 			<div class="nav">
-				<ul >
-				<li class="Dashbord"><a href="/page/dashbord">Dashbord</a></li>
-				<li class="Schorarship"><a  href="/page/scholarships">Schorarship</a></li>
-				<li class="Transport"><a href="/page/transports">Transport</a></li>
-				<li class="Dining"><a href="/page/dining">Dining</a></li>
-				<li class="Program"><a href="/page/notification">Notification</a></li>
-				<li class="Events"><a href="/page/events">Events</a></li>
-				<li class="News"><a href="/page/news">News</a></li>
-				<li class="News"><a href="/page/admission">Admission</a></li>
-				<li class="Logout" style="float:right"><a href="/">Logout</a></li>
-				<div class="dropdown">
-    <button class="dropbtn">Data View 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-     <a href="/page/viewscholarships">Schorarship Data</a>
-      <a href="/page/viewstransport">Transport Data</a>
-      <a  href="/page/viewsdining">Dining Data</a>
-	  <a href="/page/viewsevent">Events Data</a>
-	  <a href="/page/viewnews">News Data</a>
-      <a href="/page/viewadmission">Admission Data</a>
-	  <a class="active" href="/page/viewnotification">Notification Data</a>
-	  
-    </div>
-  </div> 
-  
+				<ul>
+					<li class="Dashbord"><a href="/page/dashbord">Dashbord</a></li>
+					<li class="Schorarship"><a href="/page/scholarships">Schorarship</a></li>
+					<li class="Transport"><a href="/page/transports">Transport</a></li>
+					<li class="Dining"><a href="/page/dining">Dining</a></li>
+					<li class="Program"><a href="/page/notification">Notification</a></li>
+					<li class="Events"><a href="/page/events">Events</a></li>
+					<li class="News"><a href="/page/news">News</a></li>
+					<li class="News"><a href="/page/admission">Admission</a></li>
+					<li class="Logout" style="float:right"><a href="/">Logout</a></li>
+					<div class="dropdown">
+                    <button class="dropbtn">Data View 
+                    <i class="fa fa-caret-down"></i>
+                    </button>
+                                    <div class="dropdown-content">
+							<a href="/page/viewscholarships">Schorarship Data</a>
+							<a class="active" href="/page/viewstransport">Transport Data</a>
+							<a href="/page/viewsdining">Dining Data</a>
+							<a href="/page/viewsevent">Events Data</a>
+							<a href="/page/viewnews">News Data</a>
+							<a href="/page/viewadmission">Admission Data</a>
+	                        <a href="/page/viewnotification">Notification Data</a>
 
-			  </ul>
-			
+						</div>
+					</div>
+
+
+				</ul>
+
 			</div>
-		
-				<h1 style="margin-left:40%">Data of Notification</h1>
-                <table id="data" class="responstable" style="width:100%; margin-left:auto; margin-right:auto;" >
-                    <tr>
-                    <th width="15%">title</th>
-                    <th width="30%">description</th>
-                    <th width="10%">lastdate</th>
-                    <th width="5%">Update</th>
-                    <th width="5%">Delete</th>
+            <h1 style="margin-left:40%">Data of Transport</h1>
+            <div class="wrap">
+                <div class="search">
+                   <input type="text" id="myInput" onkeyup="myFunction()" class="searchTerm" placeholder="What are you looking for?">
+                   <button type="submit" class="searchButton">
+                     <i class="fa fa-search"></i>
+                  </button>
+                </div>
+             </div>
+
+             <table id="data" class="responstable" style="width:100%; margin-left:auto; margin-right:auto;" >
+                    <thead> 
+                <tr>
+                <th width="15%">title</th>
+                <th width="30%">description</th>
+                <th width="10%">lastdate</th>
+                <th width="5%">Update</th>
+                <th width="5%">Delete</th>
+            
+            </tr>
+        </thead>
+        <tbody> 
+
+            <%for(var i=0;i<notification.length;i++){%>
                 
-                </tr>
+                <tr>
+                <td width="15%"><%=notification[i].title%></td>
+                <td width="30%"><%=notification[i].description%></td>
+                <td width="10%"><%=notification[i].lastdate%></td>
+                <td width="5%"><a href='/api/notification/edit/<%=notification[i]._id %>'><button style="background-color:#00FF00;border-radius:4px;" >Update</button></a></td>
+                <td width="5%"><a  href='/api/notification/delete/<%=notification[i]._id %>'><button style="background-color:#FF0000;border-radius:4px;">Delete</button></a></td>
 
-                <%for(var i=0;i<notification.length;i++){%>
-                    
-                    <tr>
-                    <td width="15%"><%=notification[i].title%></td>
-                    <td width="30%"><%=notification[i].description%></td>
-                    <td width="10%"><%=notification[i].lastdate%></td>
-                    <td width="5%"><a href='/api/notification/edit/<%=notification[i]._id %>'><button style="background-color:#00FF00;border-radius:4px;" >Update</button></a></td>
-                    <td width="5%"><a  href='/api/notification/delete/<%=notification[i]._id %>'><button style="background-color:#FF0000;border-radius:4px;">Delete</button></a></td>
-  
-                </tr>
-                  <%}%>
-  
-
-        </table>
-				
-    </div>
-   
-    
-	
-</div>
+            </tr>
+              <%}%>
+            </tbody>
 
 
+    </table>
+
+        <div class="page">
+                <div id="pagination" class="paginatioin" >
+                    <a href="#">&laquo;</a>
+                    <a href="#">1</a>
+                    <a class="active" href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#">&raquo;</a>
+                  </div>
+                </div>
 
 
+
+<!-- Script for Search Bar -->
+<!-- 
+<script>
+    function myFunction() {
+        $("#myInput").on("keyup", function() {
+    var value = $(this).val();
+
+    $("table tr").each(function(index) {
+        if (index !== 0) {
+
+            $row = $(this);
+
+            var id = $row.find("td:first").text();
+
+            if (id.indexOf(value) !== 0) {
+                $row.hide();
+            }
+            else {
+                $row.show();
+            }
+        }
+    });
+});
+}
+
+</script> -->
+<script>
+    function myFunction() {
+      var input, filter, table, tr, td, i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("data");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }       
+      }
+    }
+    </script>
+
+
+<!-- Script for Paging -->
+
+<script>
+        function pagination(){
+            var req_num_row=10;
+            var $tr=jQuery('tbody th');
+            var $tr=jQuery('tbody tr');
+            var total_num_row=$tr.length;
+            var num_pages=0;
+            if(total_num_row % req_num_row ==0){
+              num_pages=total_num_row / req_num_row;
+            }
+            if(total_num_row % req_num_row >=1){
+              num_pages=total_num_row / req_num_row;
+              num_pages++;
+              num_pages=Math.floor(num_pages++);
+            }
+            for(var i=1; i<=num_pages; i++){
+              jQuery('#pagination').append(" "+i+" ");
+            }
+            $tr.each(function(i){
+              jQuery(this).hide();
+              if(i+1 <= req_num_row){
+                $tr.eq(i).show();
+              }
+            
+            });
+            jQuery('#pagination a').click(function(e){
+              e.preventDefault();
+              $tr.hide();
+              var page=jQuery(this).text();
+              var temp=page-1;
+              var start=temp*req_num_row;
+              //alert(start);
+              
+              for(var i=0; i< req_num_row; i++){
+                
+                $tr.eq(start+i).show();
+              
+              }
+            });
+          }
+        jQuery('document').ready(function(){
+          pagination();
         
-<!-- <script>
+        
+        
+        });
+        
+        </script>
+    
+    
+    
+    <script type='text/javascript'>
+     
+      $(function () {
+          // Selectors for future use
+          var myTable = "#data";
+          var myTableBody = myTable + " tbody";
+          var myTableRows = myTableBody + " tr";
+          var myTableColumn = myTable + " th";
+    
+          // Starting table state
+          function initTable() {
+    
+              // Increment the table width for sort icon support
+              $(myTableColumn).each(function () {
+                  var width = $(this).width();
+                  $(this).width(width + 40);
+              });
+    
+              // Set the first column as sorted ascending
+              $(myTableColumn).eq(0).addClass("sorted-asc");
+    
+              //Sort the table using the current sorting order
+              sortTable($(myTable), 0, "asc");
+    
+          }
+    
+          // Table starting state
+          initTable();
+    
+          // Table sorting function
+          function sortTable(table, column, order) {
+              var asc = order === 'asc';
+              var tbody = table.find('tbody');
+    
+              // Sort the table using a custom sorting function by switching 
+              // the rows order, then append them to the table body
+              tbody.find('tr').sort(function (a, b) {
+                  if (asc) {
+                      return $('td:eq(' + column + ')', a).text()
+                          .localeCompare($('td:eq(' + column + ')', b).text());
+                  } else {
+                      return $('td:eq(' + column + ')', b).text()
+                          .localeCompare($('td:eq(' + column + ')', a).text());
+                  }
+              }).appendTo(tbody);
+    
+          }
+    
+          // Heading click
+          $(myTableColumn).click(function () {
+    
+              // Remove the sort classes for all the column, but not the first
+              $(myTableColumn).not($(this)).removeClass("sorted-asc sorted-desc");
+    
+              // Set or change the sort direction
+              if ($(this).hasClass("sorted-asc") || $(this).hasClass("sorted-desc")) {
+                  $(this).toggleClass("sorted-asc sorted-desc");
+              } else {
+                  $(this).addClass("sorted-asc");
+              }
+    
+              //Sort the table using the current sorting order
+              sortTable($(myTable),
+                          $(this).index(),
+                          $(this).hasClass("sorted-asc") ? "asc" : "desc");
+    
+          });
+    
+      });
+    
+    </script>
+    
+        <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content"></div>
+            </div>
+            <div class="modal-dialog">
+                <div class="modal-content"></div>
+            </div>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Close</span>
+        
+                        </button>
+                         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        
+                    </div>
+                    <div class="modal-body"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
 
+
+
+<!-- 
+        <script>
+                            $(".btn[data-target='#myModal']").click(function() {
+                    var columnHeadings = $("thead th").map(function() {
+                                return $(this).text();
+                            }).get();
+                    columnHeadings.pop();
+                    var columnValues = $(this).parent().siblings().map(function() {
+                                return $(this).text();
+                    }).get();
+                var modalBody = $('<div id="modalContent"></div>');
+                var modalForm = $('<form role="form" name="modalForm" action="putYourPHPActionHere.php" method="post"></form>');
+                $.each(columnHeadings, function(i, columnHeader) {
+                    var formGroup = $('<div class="form-group"></div>');
+                    formGroup.append('<label for="'+columnHeader+'">'+columnHeader+'</label>');
+                    formGroup.append('<input class="form-control" name="'+columnHeader+i+'" id="'+columnHeader+i+'" value="'+columnValues[i]+'" />'); 
+                    modalForm.append(formGroup);
+                });
+                modalBody.append(modalForm);
+                $('.modal-body').html(modalBody);
+                });
+                $('.modal-footer .btn-primary').click(function() {
+                $('form[name="modalForm"]').submit();
+                });
+        
+        
+        
+        </script> -->
+	<!-- <script>
 populateTable();
 function populateTable(){
         var mydata;
@@ -98,17 +341,14 @@ function populateTable(){
         console.log('Unable to put data');
 
        
-                $.getJSON("https://qauinformationsystem.herokuapp.com/api/notification", function(data){
+                $.getJSON("https://qauinformationsystem.herokuapp.com/api/routes", function(data){
                     console.log(data);
-      
-   
-               
+                 
   
                     $.each(data, function(i, field){
                    
-                       $('#data').append('<tr><td>'+field.title+'</td><td>'+field.description+
-                        '</td><td>'+field.lastdate+
-                        '</td><td><a href="#" id="btn1" class="deletetransport"   rel="' + this._id + '" >delete</a></td><td> <a href=""  class="btn btn-warning" onclick="Change()><span class="glyphicon glyphicon-edit"></span>Update</a></td></tr>' 
+                       $('#data').append('<tr><td>'+field.route+'</td><td>'+field.detail+
+                        '</td><td>'+field.busno+'</td><td>'+field.time+' </td><td><a href="#" id="btn1" class="deletetransport"   rel="' + this._id + '" >delete</a></td><td> <a href=""  class="btn btn-warning"  class="btn btn-success" data-toggle="modal" data-target="#myModal"contenteditable="false"><span class="glyphicon glyphicon-edit"></span>Update</a></td></tr>' 
             
                     );
 
@@ -121,11 +361,10 @@ function populateTable(){
           }
 
 
- 
-	</script>
- -->
 
-<script>
+	</script> -->
+
+<!-- <script>
 	$('#data tbody').on('click', 'td a.deletetransport', function deletetransport(event){
 
 
@@ -138,7 +377,7 @@ function populateTable(){
         $.ajax({
             method:'DELETE',
             type: 'DELETE',
-            url: '/api/notification/delete/'  + $(this).attr('rel'),
+            url: '/api/routes/delete/'  + $(this).attr('rel'),
 
         }).done(function( response) {
           
@@ -168,13 +407,8 @@ function populateTable(){
 
     }
 })
-</script>
-
-
-
+</script> -->
 
 </body>
+
 </html>
-
-
-

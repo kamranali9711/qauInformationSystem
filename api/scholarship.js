@@ -20,6 +20,7 @@ exports.viewScholarship = function(req,res){
   }
 
 exports.add= function(req, res){
+    console.log(req.body);
     let newScholarship = new Scholarship({
         title: req.body.title,
         requirement: req.body.requirement,
