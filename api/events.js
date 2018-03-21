@@ -165,6 +165,26 @@ exports.getAll = function (req, res) {
 }
 
 
+// exports.getAll = function(req, res, next){
+//   Events
+//         .find()
+//         .exec()
+//         .then(docs =>{
+//           const response ={
+//             events: docs.map(doc=>{
+//               return {
+//                 title: doc.title,
+//                 subtitle: doc.subtitle,
+//                 description: doc.description,
+//                 date: doc.date,
+//                 imageurl: doc.imageurl,
+//               };
+//             })
+//           }
+//         })
+// }
+
+
 
 
 

@@ -59,6 +59,7 @@ app.use('/api',route);
    routes(app);
 app.use(express.static(path.join(__dirname, 'layout')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static('uploads'));
 
 
 

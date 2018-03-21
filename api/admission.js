@@ -90,6 +90,7 @@ exports.edit = function(req, res){
         res.status(404).send({message:"No data found"});
       }
       else{
+        console.log(req.body);
         res.render("editAdimssionForm",{admissions:result});
         // res.send({admissions:result});
       }
