@@ -69,28 +69,117 @@ exports.delete = function(req, res, next){
 }
 
 //function used to edit some data in database
+// exports.edit=function(req,res){
+//   if(req.params.id==undefined){
+//     res.status(404).send({
+//       message:'one or more perameters missing'
+//     });
+//   }else{
+//     Routes.findOne({_id:req.params.id}).exec(function(error,Routes){
+//     //  console.log(Routes);
+//       Routes.route=req.body.route?req.body.route:Routes.route;
+//       Routes.detail=req.body.detail?req.body.detail:Routes.detail;
+//       Routes.busno=req.body.busno?req.body.busno:Routes.busno;     
+//       Routes.time=req.body.time?req.body.time:Routes.time;           
+//       Routes.save(function(error,Routes){
+//         if(error){
+//           res.status('500').send({message:'error found'})
+//         }else{
+//           res.status('202').send({message:'updated'})
+//         }
+//       });
+//     })
+//  }
+// }
+
+/*
 exports.edit=function(req,res){
-  if(req.params.id==undefined){
-    res.status(404).send({
-      message:'one or more perameters missing'
-    });
-  }else{
-    Routes.findOne({_id:req.params.id}).exec(function(error,Routes){
-    //  console.log(Routes);
-      Routes.route=req.body.route?req.body.route:Routes.route;
-      Routes.detail=req.body.detail?req.body.detail:Routes.detail;
-      Routes.busno=req.body.busno?req.body.busno:Routes.busno;     
-      Routes.time=req.body.time?req.body.time:Routes.time;           
-      Routes.save(function(error,Routes){
-        if(error){
-          res.status('500').send({message:'error found'})
-        }else{
-          res.status('202').send({message:'updated'})
-        }
+    if(req.params.id==undefined){
+      res.status(404).send({
+        message:'one or more perameters missing'
       });
+    }else{
+        Routes.findOne({_id:req.params.id}).then(function(result){
+        if(!result){
+          res.status(404).send({Error:"No data found"});
+        }else{
+          res.render("editTransportForm",{transport:result});
+        }
+      })
+   }
+  }
+*/
+
+
+  exports.edit = function(req,res){
+    Routes.findOne({_id:req.params.id}).then(function(result){
+          if(result){
+            res.render('editTransportForm', {
+              transport:result
+            });
+          }else{
+            console.log("Bus is not found");
+          }
+        })
+  }
+
+  exports.editTransport = function(req,res){
+        Routes.findOne({_id:req.body.id}).then(function(result){
+          if(result){
+            result.route = req.body.route;
+            result.detail =req.body.detail;
+            result.busno = req.body.busno;
+            result.time = req.body.time;
+            result.save(function(error,done){
+              if(error){
+                console.log(error);
+              }else{
+                Routes.find({}).exec(function(error,result){
+                  if(error){
+                    console.log("error",error);
+                    res.status(500).send({error:error});
+                  }else{
+                    console.log(result);
+                    res.render('viewtranspot', {
+                      transport:result
+                    });
+                  }
+                })
+              }
+            })
+          }else{
+            console.log("Bus not found");
+          }
+        })
+  }
+  
+
+/*
+exports.editTransport = function(req,res){
+    console.log(req.body);
+    Routes.findOne({_id:req.body.id}).exec(function(err,transport){
+        if(err){
+            res.status('500').send({message:'error'})
+        }
+        else{
+            console.log(transport);
+            transport.route=req.body.route;
+            transport.detail=req.body.detail;
+            transport.busno=req.body.busno;
+            transport.time=req.body.time;
+            transport.save(function(err,result){
+                if(err){
+                    res.status('500').send({message:'error found'})
+                }
+                else{
+                    console.log(result);
+                    res.render("viewtransport",{transport:result});
+                }
+            });
+        }
     })
- }
 }
+*/
 
 // //function used to post some data in database
 // exports.add=function(req,res){

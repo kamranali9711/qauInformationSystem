@@ -53,6 +53,7 @@ router.post('/routes/add',routes.add);
 router.get('/routes', routes.getAll);
 router.get('/routes/delete/:id', routes.delete);
 router.get('/routes/edit/:id', routes.edit);
+router.post('/routes/editTransport',routes.editTransport);
 
 
 //Define the routes for Dining

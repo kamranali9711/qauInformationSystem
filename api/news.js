@@ -69,7 +69,7 @@ var storage = multer.diskStorage({
           //    console.log(result);
           }
         });
-        res.end();
+       
       }
     })
 }

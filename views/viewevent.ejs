@@ -61,7 +61,7 @@
                     <th width="10%">title</th>
                     <th width="20%">subtitle</th>
                     <th width="35%">description</th>
-                    <th width="20%">imageurl</th>
+                   
                     <th width="5%">date</th>
                     <th width="5%">Update</th>
                     <th width="5%">Delete</th>
@@ -73,9 +73,9 @@
                     
                     <tr>
                     <td width="15%"><%=event[i].title%></td>
-                    <td width="30%"><%=event[i].subtitle%></td>
-                    <td width="10%"><%=event[i].description%></td>
-                    <td width="10%"><%=event[i].imageurl%></td>
+                    <td width="20%"><%=event[i].subtitle%></td>
+                    <td width="45%"><%=event[i].description%></td>
+                   
                     <td width="10%"><%=event[i].date%></td>
                     <td width="5%"><a href='/api/event/edit/<%=event[i]._id %>'><button style="background-color:#00FF00;border-radius:4px;" >Update</button></a></td>
                     <td width="5%"><a  href='/api/events/delete/<%=event[i]._id %>'><button style="background-color:#FF0000;border-radius:4px;">Delete</button></a></td>

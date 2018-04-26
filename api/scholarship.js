@@ -3,9 +3,8 @@ const Scholarship = require('../models/scholarship.js');
 
 
 exports.openScholarship=function(req,res){
-    console.log("check1");
-  
-  res.render('scholarship',{scholarship:1234});
+    
+  res.render('scholarship');
   }
 
 exports.viewScholarship = function(req,res){
@@ -19,6 +18,27 @@ exports.viewScholarship = function(req,res){
 
   }
 
+  exports.add = function(req, res){
+    console.log(req.body);
+    let newScholarship = new Scholarship({
+      title:req.body.title,
+      requirement:req.body.requirement,
+      description:req.body.description,
+      date:req.body.date,
+    });
+    newScholarship.save(function(err,scholarship){
+      if(err){
+        // console.log(err);
+        res.status(500).send({err:err});
+        // console.log("Admission is not added");
+      }
+      else{
+        res.render('scholarship',{scholarship:scholarship});
+      }
+    });
+  }
+  
+/*
 exports.add= function(req, res){
     console.log(req.body);
     let newScholarship = new Scholarship({
@@ -39,6 +59,7 @@ exports.add= function(req, res){
         }
     });
 }
+*/
 
 //function is used to post data in database
 // exports.add= function(req, res){
