@@ -75,8 +75,8 @@
 							<input type=file name="userFile"  id="userFile" required="required" style="margin-left:30px;margin-top:10px;margin-bottom:15px">
 						  </div>
 					
-					<label  style="margin-left:35%; margin-top:50px">Last Date: </label>
-					<input id="datepicker" name="date"  id="date"  />
+					<label  style="margin-left:35%; margin-top:50px">Date: </label>
+					<input id="datepicker" name="date"  id="date"  placeholder='Select date' />
 		
 					
 					<button type="submit"  class="button button1" value="Add Row" style="margin-top:30px">Submit</button>
@@ -96,9 +96,6 @@
 			
 			</div>
 				
-			<div class="footer">
-			
-			</div>
 			
 		
 
@@ -109,10 +106,16 @@
 </div>
 
 <!-- For calander  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<!-- load jQuery UI CSS theme -->
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <script>
-  $(document).ready(function() {
-    $("#datepicker").datepicker();
-  });
+	$('#datepicker').datepicker({ minDate: 0 });
+//   $(document).ready(function() {
+//     $("#datepicker").datepicker();
+//   });
   </script>
 
 <script>

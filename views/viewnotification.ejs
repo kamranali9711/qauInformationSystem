@@ -50,7 +50,7 @@
 				</ul>
 
 			</div>
-            <h1 style="margin-left:40%">Data of Transport</h1>
+            <h1 style="margin-left:40%">Notification Data</h1>
             <div class="wrap">
                 <div class="search">
                    <input type="text" id="myInput" onkeyup="myFunction()" class="searchTerm" placeholder="What are you looking for?">
@@ -79,7 +79,7 @@
                 <td width="15%"><%=notification[i].title%></td>
                 <td width="30%"><%=notification[i].description%></td>
                 <td width="10%"><%=notification[i].lastdate%></td>
-                <td width="5%"><a href='/api/notification/edit/<%=notification[i]._id %>'><button style="background-color:#00FF00;border-radius:4px;" >Update</button></a></td>
+                <td width="5%"><a href='/api/notification/edit/<%=notification[i]._id %>'><button alert("You want to Delete this row!"); style="background-color:#00FF00;border-radius:4px;" >Update</button></a></td>
                 <td width="5%"><a  href='/api/notification/delete/<%=notification[i]._id %>'><button style="background-color:#FF0000;border-radius:4px;">Delete</button></a></td>
 
             </tr>

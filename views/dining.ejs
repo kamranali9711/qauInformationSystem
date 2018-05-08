@@ -53,16 +53,16 @@
 				<h2 style="margin-left:450px">Hurts detail Form </h2>
 				
 				<form  method="post" id="form" name="myForm" type="submit" action="/api/dining/add" onsubmit="alert('Succesfully add data');" >
-					<label for="hurt" style="margin-left:450px;margin-top:50px; padding-top:50px">Hurt Name</label><br>
+					<label for="hurt" style="margin-left:450px;margin-top:50px; padding-top:50px">Huts Name</label><br>
 					
-					<textarea class="dataedit" name="name" type="text" id="name" rows="2" cols="25" required placeholder="Enter Hurt Name...." style="margin-left:450px;margin-top:10px"></textarea><br>
+					<textarea class="dataedit" name="name" type="text" id="name" onkeypress="return onlyAlphabets(event,this);" rows="2" cols="25" required placeholder="Enter Hurt Name...." style="margin-left:450px;margin-top:10px"></textarea><br>
 					
 					<!-- Band Description
 					<input type="text" id="fname" name="firstname" placeholder="Your name.."> -->
 					
 				<!--	<label for="busno" style="margin-left:100px">Bus No</label>-->
 				<label for="dish" style="margin-left:450px">Dish Name</label><br>
-					<textarea class="dataedit" name="menu" type="text" id="menu" rows="15" cols="25" required placeholder="Like = Dish name : Dish price...." style="margin-left:450px;margin-top:10px"></textarea><br>
+					<textarea class="dataedit" name="menu" type="text" id="menu" onkeypress="return onlyAlphabets(event,this);" rows="15" cols="25" required placeholder="Like = Dish name : Dish price...." style="margin-left:450px;margin-top:10px"></textarea><br>
 
 					<button type="submit" onclick="message()"  class="button button1" value="Add Row" style="margin-top:30px">Submit</button>
 					
@@ -86,6 +86,52 @@
 	</div>
 	
 </div>
+
+
+<!-- Script for restrict to enter only text value -->
+<script language="Javascript" type="text/javascript">
+
+ 
+
+	function onlyAlphabets(e, t) {
+
+		try {
+
+			if (window.event) {
+
+				var charCode = window.event.keyCode;
+
+			}
+
+			else if (e) {
+
+				var charCode = e.which;
+
+			}
+
+			else { return true; }
+
+			if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+
+				return true;
+
+			else
+
+				return false;
+
+		}
+
+		catch (err) {
+
+			alert(err.Description);
+
+		}
+
+	}
+
+
+
+</script>
 
 
 

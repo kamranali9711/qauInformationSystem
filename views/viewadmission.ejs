@@ -261,7 +261,7 @@
 			
 			</div>
             <%console.log(admissions)%>
-                <h1 style="margin-left:40%">Data of Admission</h1>
+                <h1 style="margin-left:40%">Admission Data</h1>
                 <div class="wrap">
                     <div class="search">
                        <input type="text" id="myInput" onkeyup="myFunction()" class="searchTerm" placeholder="What are you looking for?">
@@ -288,7 +288,7 @@
                         <td width="15%"><%=admissions[i].discipline%></td>
                         <td width="30%"><%=admissions[i].requirement%></td>
                         <td width="10%"><%=admissions[i].lastdate%></td>
-                        <td width="5%"><a href='/api/admission/edit/<%=admissions[i]._id %>'><button style="background-color:#00FF00;border-radius:4px;"  style="width:auto;">Update</button></a></td>
+                        <td width="5%"><a href='/api/admission/edit/<%=admissions[i]._id %>'><button class="alert" style="background-color:#00FF00;border-radius:4px;"  style="width:auto;">Update</button></a></td>
                         <td width="5%"><a  href='/api/admission/delete/<%=admissions[i]._id %>'><button style="background-color:#FF0000;border-radius:4px;" >Delete</button></a></td>
       
                     </tr>
@@ -311,6 +311,12 @@
 
 				
     </div>
+
+
+    <script>
+        
+    
+    </script>
 
     <!-- Script for Search Bar -->
     <script>

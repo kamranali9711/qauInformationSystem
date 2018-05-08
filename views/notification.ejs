@@ -64,7 +64,7 @@
 				<h2 style="margin-left:450px">Notification detail Form </h2>
 				
 				
-				<form  method="post" id="form"  name="myForm" type="submit" action="/api/notification/add">
+				<form  method="post" id="form" alert("Data is entered successfuly!");  name="myForm" type="submit" action="/api/notification/add">
 					<label for="fname" style="margin-left:30px; margin-top:50px">Title</label>
 					<textarea class="dataedit" name="title" type="text" id="title" rows="2" cols="150" required placeholder="Title of Notification...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
 					
@@ -76,12 +76,12 @@
 					<textarea class="dataedit" name="description" type="text" id="description" rows="5" cols="150" required placeholder="Description of Notification...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
 
 					
-					<label  style="margin-left:35%; margin-top:50px">Last Date: </label>
-					 <input id="datepicker" name="lastdate" id="lastdate"  required />
+					<label  style="margin-left:35%; margin-top:50px">Date: </label>
+					 <input id="datepicker" name="lastdate" id="lastdate" type='text'  placeholder='Select date' required />
 			<!--		<input type="date" name="lastdate" id="lastdate" required> -->
 
 					
-					<button type="submit"  class="button button1"  style="margin-top:30px">Submit</button>
+					<button type="submit" onclick="myFunction()"  class="button button1"  style="margin-top:30px">Submit</button>
 					
          
 			
@@ -97,17 +97,28 @@
 	</div>
 	
 </div>
-<div class="footer">
-			
-	</div>
+
 
 <!-- Band Description -->
 
-<!-- For calander  -->
+<!-- Alert Box -->
 <script>
-  $(document).ready(function() {
-    $("#datepicker").datepicker();
-  });
+		function myFunction() {
+			alert("Data is entered successfuly!");
+		}
+		</script>
+
+<!-- For calander  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<!-- load jQuery UI CSS theme -->
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script>
+	$('#datepicker').datepicker({ minDate: 0 });
+//   $(document).ready(function() {
+//     $("#datepicker").datepicker();
+//   });
   </script>
 
 

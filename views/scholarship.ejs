@@ -86,7 +86,7 @@
 
 
 					<label  style="margin-left:35%; margin-top:50px">Last Date: </label>
-					 <input id="datepicker" name="lastdate"  required />
+					 <input id="datepicker" name="lastdate"  required placeholder='Select date' />
 		<!--			<input type="date" name="lastdate" id="lastdate" required> -->
 
 					
@@ -114,17 +114,21 @@
 	</div>
 	
 </div>
-<div class="footer">
-			
-	</div>
+
 
 <!-- Band Description -->
 
 <!-- For calander  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<!-- load jQuery UI CSS theme -->
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <script>
-  $(document).ready(function() {
-    $("#datepicker").datepicker();
-  });
+//   $(document).ready(function() {
+//     $("#datepicker").datepicker();
+//   });
+$('#datepicker').datepicker({ minDate: 0 });
   </script>
 
 <script>

@@ -3,6 +3,10 @@
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <link href="/css/viewscholarship.css" rel="stylesheet">
+<!--bootstrap for model -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -60,7 +64,7 @@
 			
 			</div>
 		
-				<h1 style="margin-left:40%">Data of Schorarship</h1>
+				<h1 style="margin-left:40%">scholarship Data</h1>
 				
 			
                 <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for title.." title="Type in a name"
@@ -97,7 +101,8 @@
                       <td width="30%"><%=scholarship[i].requirement%></td>
                       <td width="30%"><%=scholarship[i].description%></td>
                       <td width="10%"><%=scholarship[i].date%></td>
-                      <td width="5%"><a href='/api/scholarship/edit/<%=scholarship[i]._id %>'><button style="background-color:#00FF00;border-radius:4px;" >Update</button></a></td>
+                  <!--    <td width="5%"><a href='/api/scholarship/edit/<%=scholarship[i]._id %>'><button style="background-color:#00FF00;border-radius:4px;" >Update</button></a></td> -->
+                  <td><a href="#" id="btn1" class="updatenews btn btn-info "   rel="' + this._id + '" >Edit</a></td>
                       <td width="5%"><a  href='/api/scholarship/delete/<%=scholarship[i]._id %>'><button style="background-color:#FF0000;border-radius:4px;">Delete</button></a></td>
     
                   </tr>
@@ -120,6 +125,90 @@
 	</div>
 	
 </div>
+
+
+<!-- Modal For Editing -->
+<div id="add_data_Modal1" class="modal fade ">  
+  <div class="modal-dialog">  
+       <div class="modal-content">  
+            <div class="modal-header">  
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>  
+               <center> <h4 class="modal-title">scholarship</h4>  </center> 
+            </div>  
+            <div class="modal-body">  
+                 <form  id="editForm"  method="POST" class="editForm">  
+
+
+                         <label>Title</label>  
+                      <input  name="field1" id="field1" class="form-control" />  
+                      <br /> 
+
+                      <label>Requirement</label>  
+                      <input  name="field2" id="field2" class="form-control" />  
+                      <br />  
+
+                      <label>Description</label>  
+                      <input  name="field3" id="field3" class="form-control" />  
+                      <br /> 
+
+                      <label>Date</label>  
+                      <input type="text" name="field4" id="field4" class="form-control"  />  
+                      <br />  
+ 
+                     
+                 
+
+               <!--       <input type="hidden" name="employee_id" id="employee_id" />  -->
+                     <!-- <input type="submit" name="insert" id="'+this._id+''" value="Update" class="editForm btn btn-success" />  -->
+                     <button id="button_1" value="val_1" name="but1">Update</button>
+                 </form>  
+            </div>  
+            <div class="modal-footer">  
+                 <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>  
+            </div>  
+       </div>  
+  </div>  
+</div>
+
+
+<!-- Script for Update query -->
+<script>
+
+     
+  $('#data tbody').on('click','td a.updatenews', function updatecustomer(event) {
+  
+    event.preventDefault();
+  
+    var dmJSON = "http://localhost:3000/api/scholarship";
+    var employee_id = $(this).attr('rel'); 
+    data = {employee_id:employee_id}
+    console.log(data);
+  
+   jQuery.getJSON( dmJSON, function(data) {
+    console.log(data);
+      var idx=1;
+      $.each(data, function(i, f) {
+  
+      if(f._id == employee_id){
+         $('#field1').val(f.title)
+         $('#field2').val(f.requirement)
+         $('#field3').val(f.description)
+         $('#field4').val(f.date)
+         $('#employee_id').val(f._id);
+      
+  
+         $('#add_data_Modal1').modal('show'); 
+          
+      }
+      });
+   });
+  
+  
+  
+   
+  });
+  </script>
+
 
 
 <!-- Script for Search Bar -->
@@ -358,14 +447,14 @@ function populateTable(){
 </script> -->
 
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $(document).ready(function () {
         $('#data').dataTable({
             "iDisplayLength": 5,
             "lengthMenu": [5,10, 25, 50, 100]
         });
     });
-</script>
+</script> -->
 
 
 
