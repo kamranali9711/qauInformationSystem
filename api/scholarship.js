@@ -18,25 +18,50 @@ exports.viewScholarship = function(req,res){
 
   }
 
-  exports.add = function(req, res){
-    console.log(req.body);
+
+  exports.add= function(req, res){
     let newScholarship = new Scholarship({
-      title:req.body.title,
-      requirement:req.body.requirement,
-      description:req.body.description,
-      date:req.body.date,
+        title: req.body.title,
+        requirement: req.body.requirement,
+        description: req.body.description,
+        date: req.body.date
     });
-    newScholarship.save(function(err,scholarship){
-      if(err){
-        // console.log(err);
-        res.status(500).send({err:err});
-        // console.log("Admission is not added");
-      }
-      else{
-        res.render('scholarship',{scholarship:scholarship});
-      }
+
+    newScholarship.save((err, scholarship)=>{
+        if(err){
+            res.json({msg: 'Failed to add the notifications'});
+        }
+        else{
+          console.log("notifications is added successfully");
+            // res.json({msg: 'notifications is added successfully'});
+            res.render('scholarship',{scholarship:scholarship});
+            // res.render("notification")
+        }
     });
-  }
+}
+
+
+  // exports.add = function(req, res){
+  //   // console.log(req.body);
+  //   let newScholarship = new Scholarship({
+  //     title:req.body.title,
+  //     requirement:req.body.requirement,
+  //     description:req.body.description,
+  //     date:req.body.date,
+  //   });
+  //   newScholarship.save(function(err,scholarship){
+  //     if(err){
+  //       // console.log(err);
+  //       res.status(500).send({err:err});
+  //       // console.log("Admission is not added");
+  //     }
+  //     else{
+  //     // res.json({msg: 'notifications is added successfully'});
+  //       console.log("data insterted successfully");
+  //       res.render('scholarship',{scholarship:scholarship});
+  //     }
+  //   });
+  // }
   
 /*
 exports.add= function(req, res){

@@ -6,14 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <!--For clander -->
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-
-
-
 <style>
  
   </style>
@@ -37,7 +33,7 @@
 			<div class="nav">
 				<ul >
 				<li class="Dashbord"><a href="/page/dashbord">Dashbord</a></li>
-				<li class="Schorarship"><a class="active"  href="/page/scholarships">Schorarship</a></li>
+				<li class="Schorarship"><a class="active" href="/page/scholarships">Schorarship</a></li>
 				<li class="Transport"><a href="/page/transports">Transport</a></li>
 				<li class="Dining"><a href="/page/dining">Dining</a></li>
 				<li class="Program"><a  href="/page/notification">Notification</a></li>
@@ -55,8 +51,8 @@
 					<a href="/page/viewsdining">Dining Data</a>
 					<a href="/page/viewsevent">Events Data</a>
 					<a href="/page/viewnews">News Data</a>
-	  <a href="/page/viewadmission">Admission Data</a>
-	  <a href="/page/viewnotification">Notification Data</a>
+					<a href="/page/viewadmission">Admission Data</a>
+					<a href="/page/viewnotification">Notification Data</a>
 					</div>
 				</div> 
 				
@@ -65,58 +61,55 @@
 			
 			</div>
 			<div class="form">
-				<h2 style="margin-left:450px">Schorarship detail Form </h2>
+				<h2 style="margin-left:450px">Scholarship detail Form </h2>
 				
-				<form  method="post" type="submit" action="/api/scholarship/add" id="myForm">
-					<label for="fname" style="margin-left:30px; margin-top:50px">Tilte</label>
-					<textarea class="dataedit" name="title" type="text" id="title" rows="2" cols="150" required placeholder="Tilte of Schorarship...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
+				
+				<form  method="post" id="form" alert("Data is entered successfuly!");  name="myForm" type="submit" action="/api/scholarship/add">
+					<label for="fname" style="margin-left:30px; margin-top:50px">Title</label>
+					<textarea class="dataedit" name="title" type="text" id="title" rows="2" cols="150" required placeholder="Title of Notification...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
 					
 					<!-- Band Description
 					<input type="text" id="fname" name="firstname" required placeholder="Your name.."> -->
 
+					
+					<label for="lname" style="margin-left:30px; margin-top:50px; padding-top:50px">Requirement</label>
+					<textarea class="dataedit" name="requirement" type="text" id="requirement" rows="2" cols="150" required placeholder="Description of Notification...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
 
-				<!--	<input class="dataedit" name="description" type="text" id="description"  placeholder="Description of Schorarship...." style="margin-left:30px;margin-top:10px;margin-bottom:10px;height:50px;width:500px"></input>-->
-					
-					
-					<label for="lname" style="margin-left:30px;margin-top:30px">Requirnments</label>
-					<textarea class="dataedit" name="requirnments" type="text" id="requirnments" rows="5" cols="150" required placeholder="Requirnments of Schorarship...." style="margin-left:30px;margin-top:10px;margin-bottom:15px"></textarea>
-					
 					<label for="lname" style="margin-left:30px; margin-top:50px; padding-top:50px">Description</label>
-					<textarea class="dataedit" name="description" type="text" id="description" rows="5" cols="150" required placeholder="Description of Schorarship...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
-
-
-					<label  style="margin-left:35%; margin-top:50px">Last Date: </label>
-					 <input id="datepicker" name="lastdate"  required placeholder='Select date' />
-		<!--			<input type="date" name="lastdate" id="lastdate" required> -->
+					<textarea class="dataedit" name="description" type="text" id="description" rows="5" cols="150" required placeholder="Description of Notification...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
 
 					
-					<button type="submit"  class="button button1"  style="margin-top:30px">Submit</button>
+					<label  style="margin-left:35%; margin-top:50px">Date: </label>
+					 <input id="datepicker" name="date" id="date" type='text'  placeholder='Select date' required />
+			<!--		<input type="date" name="lastdate" id="lastdate" required> -->
+
+					
+					<button type="submit" onclick="myFunction()"  class="button button1"  style="margin-top:30px">Submit</button>
 					
          
 			
-				<!-- Band Description 
-				<label for="country">Country</label>
-				<select id="country" name="country">
-				  <option value="australia">Australia</option>
-				  <option value="canada">Canada</option>
-				  <option value="usa">USA</option>
-				</select>-->
+			
+				
 		  
 		   
 				</form>
-
-			
                 
+     
+			
 			</div>
-				
-
-
 	</div>
 	
 </div>
 
 
 <!-- Band Description -->
+
+<!-- Alert Box -->
+<script>
+		function myFunction() {
+			alert("Data is entered successfuly!");
+		}
+		</script>
 
 <!-- For calander  -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -125,63 +118,13 @@
 <!-- load jQuery UI CSS theme -->
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <script>
+	$('#datepicker').datepicker({ minDate: 0 });
 //   $(document).ready(function() {
 //     $("#datepicker").datepicker();
 //   });
-$('#datepicker').datepicker({ minDate: 0 });
   </script>
 
-<script>
-$("#myForm").submit(function(e) {
-	e.preventDefault();
-	var title = $("#title").val();
-	var description = $("#description").val();
-  var requirnments = $("#requirnments").val();
-  var lastdate = $("#lastdate").val();
-  
 
-	
-	if(title == "" || description == "" || requirnments == ""|| lastdate == "" ) {
-		$("#error_message").show().html("All Fields are Required");
-	} else {
-		$("#error_message").html("").hide();
-		$.ajax({
-			type: "POST",
-			url: "localhost:5858/api/scholarship/add",
-			data: "title="+title+"&description="+description+"&requirnments="+requirnments+"&lastdate="+lastdate,
-			success: function(data){
-				$('#success_message').fadeIn().html(data);
-				setTimeout(function() {
-					$('#success_message').fadeOut("slow");
-				}, 2000 );
-
-			}
-		});
-	}
-})
-</script>	
-
-
-<script>
-// Automatic Slideshow - change image every 3 seconds
-var myIndex = 0;
-carousel();
-
-function carousel() {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";
-    }
-    myIndex++;
-    if (myIndex > x.length) {myIndex = 1}
-    x[myIndex-1].style.display = "block";
-    setTimeout(carousel, 3000);
-}
-	
-
-
-</script>
 <!-- For Background image -->
 <script>
 function myFunction() {
@@ -214,6 +157,7 @@ function myFunction() {
 
 
 </script>
+
 
 
 </body>
