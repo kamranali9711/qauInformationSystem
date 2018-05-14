@@ -55,7 +55,7 @@
 					<input type="text" id="fname" name="firstname" placeholder="Your name.."> -->
 					
 				<!--	<label for="busno" style="margin-left:100px">Bus No</label>-->
-					<textarea class="dataedit" name="busno" type="text" id="busno" rows="2" cols="25" required placeholder="Enter Bus No here...." style="margin-left:140px;margin-top:10px"></textarea><br>
+					<textarea class="dataedit" name="busno" onkeypress="return isNumber(event)"  type="text" id="busno" rows="2" cols="25" required placeholder="Enter Bus No here...." style="margin-left:140px;margin-top:10px"></textarea><br>
 
 					<label for="detail" style="margin-left:30px; margin-top:50px; padding-top:50px">Route Detail</label>
 					<textarea class="dataedit" name="detail" type="text" id="detail" rows="5" cols="150" required placeholder="Detail of route...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
@@ -116,6 +116,17 @@
 	</div>
 	
 </div>
+
+<script>
+	function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
+</script>
 
 <script>
 // Automatic Slideshow - change image every 3 seconds

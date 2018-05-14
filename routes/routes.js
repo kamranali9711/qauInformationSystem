@@ -16,6 +16,7 @@ router.get('/events', events.getAll);
 //router.post('/events/uploadimage', events.uploads);
 router.get('/events/delete/:id', events.delete);
 router.get('/events/edit/:id', events.edit);
+router.post('/event/editevent',events.editEvent);
 
 //Define routes for notification
 var notification = require('../api/notifications.js');
@@ -44,7 +45,8 @@ router.post('/news/add', news.add);
  router.get('/news', news.getAll);
 // router.post('/events/uploadimage', events.uploads);
  router.get('/news/delete/:id', news.delete);
-// router.put('/events/edit/:id', events.edit);
+ router.get('/news/edit/:id', news.edit);
+ router.post('/news/editnews',news.editNews);
 
 
 //Define the routes for transport
@@ -78,6 +80,7 @@ router.post('/scholarship/add',scholarship.add);
 router.get('/scholarship', scholarship.getAll);
 router.get('/scholarship/delete/:id', scholarship.delete);
 router.get('/scholarship/edit/:id', scholarship.edit);
+router.post('/scholarship/editScholarship',scholarship.editScholarship)
 
 //Define the routes for Departments
 var hurt = require('../api/programs.js');

@@ -128,6 +128,38 @@
 }
 
 </script> -->
+
+<script>
+      
+    populateTable();
+function populateTable(){
+     var mydata;
+      var userdata;
+    $(document).ready(function(){
+      console.log('Unable to put data'); 
+
+     
+              $.getJSON("http://localhost:3000/employee", function(data){
+                  console.log(data);
+         
+                $.each(data, function(i, field){
+                 
+                     $('#emptable').append('<tr  ><td>'+field.employeename+'</td><td>'+field.title+
+                      '</td><td>'+field.phone+'</td><td>'+field.salary+'</td><td>'+field.department+'</td><td>'+field.payscale+'</td><td><a href="#" id="btn1" class="editcustomer btn btn-info "   rel="' + this._id + '" >View</a></td> <td><a href="#" id="btn1" class="deleteEmployee btn btn-danger "   rel="' + this._id + '" >delete</a></td> <td><a href="#" id="btn1" class="updatecustomer btn btn-info "   rel="' + this._id + '" >Edit</a></td> </tr>' 
+          
+                  );
+
+            
+                      });
+                   
+      
+                      
+   
+              })
+             
+          });
+        }
+        </script>
 <script>
     function myFunction() {
       var input, filter, table, tr, td, i;

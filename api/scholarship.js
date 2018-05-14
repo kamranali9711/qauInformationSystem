@@ -139,29 +139,75 @@ exports.delete = function(req, res, next){
     });
 }
 
-//function used to edit some data in database
-exports.edit=function(req,res){
-  if(req.params.id==undefined){
-    res.status(404).send({
-      message:'one or more perameters missing'
-    });
-  }else{
-    Scholarship.findOne({_id:req.params.id}).exec(function(error,Scholarship){
-    //  console.log(Scholarship);
-      Scholarship.title=req.body.title?req.body.title:Scholarship.title;
-      Scholarship.requirement=req.body.requirement?req.body.requirement:Scholarship.requirement;
-      Scholarship.description=req.body.description?req.body.description:Scholarship.description;     
-      Scholarship.date=req.body.date?req.body.date:Scholarship.date;           
-      Scholarship.save(function(error,Scholarship){
-        if(error){
-          res.status('500').send({message:'error found'})
-        }else{
-          res.status('202').send({message:'updated'})
+
+
+
+exports.edit = function(req, res){
+    if(req.params.id==undefined){
+      res.status(404).send({message:"No result found"});
+    }else{
+        Scholarship.findOne({_id:req.params.id}).then(function(result){
+        if(!result){
+          res.status(404).send({message:"No data found"});
         }
-      });
+        else{
+          console.log(req.body);
+          res.render("editScholarshipForm",{scholarship:result});
+          // res.send({admissions:result});
+        }
+      })
+    }
+  }
+  
+  exports.editScholarship = function(req,res){
+    
+    Scholarship.findOne({_id:req.body.id}).exec(function(err,scholarship){
+        if(err){
+            res.status('500').send({message:'error'})
+        }
+        else{
+            // console.log(admissions);
+            scholarship.title=req.body.title;
+            scholarship.requirement=req.body.requirement;
+            scholarship.description=req.body.description;
+            scholarship.date=req.body.date;
+            scholarship.save(function(err,result){
+                if(err){
+                    res.status('500').send({message:'error found'})
+                }
+                else{
+                    console.log(result);
+                    res.render("viewscholarship",{scholarship:result});
+                }
+            });
+        }
     })
- }
-}
+  }
+  
+
+//function used to edit some data in database
+// exports.edit=function(req,res){
+//   if(req.params.id==undefined){
+//     res.status(404).send({
+//       message:'one or more perameters missing'
+//     });
+//   }else{
+//     Scholarship.findOne({_id:req.params.id}).exec(function(error,Scholarship){
+//     //  console.log(Scholarship);
+//       Scholarship.title=req.body.title?req.body.title:Scholarship.title;
+//       Scholarship.requirement=req.body.requirement?req.body.requirement:Scholarship.requirement;
+//       Scholarship.description=req.body.description?req.body.description:Scholarship.description;     
+//       Scholarship.date=req.body.date?req.body.date:Scholarship.date;           
+//       Scholarship.save(function(error,Scholarship){
+//         if(error){
+//           res.status('500').send({message:'error found'})
+//         }else{
+//           res.status('202').send({message:'updated'})
+//         }
+//       });
+//     })
+//  }
+// }
 
 // //function used to post some data in database
 // exports.add=function(req,res){

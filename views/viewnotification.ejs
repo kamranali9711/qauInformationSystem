@@ -63,10 +63,10 @@
              <table id="data" class="responstable" style="width:100%; margin-left:auto; margin-right:auto;" >
                     <thead> 
                 <tr>
-                <th width="15%">title</th>
-                <th width="30%">description</th>
+                <th width="20%">title</th>
+                <th width="50%">description</th>
                 <th width="10%">lastdate</th>
-                <th width="5%">Update</th>
+               
                 <th width="5%">Delete</th>
             
             </tr>
@@ -76,10 +76,10 @@
             <%for(var i=0;i<notification.length;i++){%>
                 
                 <tr>
-                <td width="15%"><%=notification[i].title%></td>
-                <td width="30%"><%=notification[i].description%></td>
+                <td width="20%"><%=notification[i].title%></td>
+                <td width="50%"><%=notification[i].description%></td>
                 <td width="10%"><%=notification[i].lastdate%></td>
-                <td width="5%"><a href='/api/notification/edit/<%=notification[i]._id %>'><button alert("You want to Delete this row!"); style="background-color:#00FF00;border-radius:4px;" >Update</button></a></td>
+                
                 <td width="5%"><a  href='/api/notification/delete/<%=notification[i]._id %>'><button style="background-color:#FF0000;border-radius:4px;">Delete</button></a></td>
 
             </tr>

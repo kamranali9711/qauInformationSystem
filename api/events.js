@@ -122,30 +122,74 @@ exports.delete = function(req, res, next){
     });
 }
 
-//function used to edit some data in database
+
+
 exports.edit=function(req,res){
   if(req.params.id==undefined){
     res.status(404).send({
       message:'one or more perameters missing'
     });
   }else{
-    Events.findOne({_id:req.params.id}).exec(function(error,Events){
-    //  console.log(Events);
-      Events.title=req.body.title?req.body.title:Events.title;
-      Events.subtitle=req.body.subtitle?req.body.subtitle:Events.subtitle;
-      Events.description=req.body.description?req.body.description:Events.description;
-      Events.imageurl=req.body.imageurl?req.body.imageurl:Events.imageurl;
-      Events.date=req.body.date?req.body.date:Events.date;      
-      Events.save(function(error,Events){
-        if(error){
-          res.status('500').send({message:'error found'})
-        }else{
-          res.status('202').send({message:'updated'})
-        }
-      });
+    Events.findOne({_id:req.params.id}).then(function(result){
+      if(!result){
+        res.status(404).send({Error:"No data found"});
+      }else{
+        res.render("editEventForm",{event:result});
+      }
     })
  }
 }
+
+
+exports.editEvent = function(req,res){
+  console.log(req.body);
+  Events.findOne({_id:req.body.id}).exec(function(err,event){
+      if(err){
+          res.status('500').send({message:'error'})
+      }
+      else{
+          // console.log(notification);
+          event.title=req.body.title;
+          event.subtitle=req.body.subtitle;
+          event.description=req.body.description;
+          event.date=req.body.date;
+          event.save(function(err,result){
+              if(err){
+                  res.status('500').send({message:'error found'})
+              }
+              else{
+                  console.log(result);
+                  res.render("viewevent",{event:result});
+              }
+          });
+      }
+  })
+}
+
+//function used to edit some data in database
+// exports.editEvent=function(req,res){
+//   if(req.params.id==undefined){
+//     res.status(404).send({
+//       message:'one or more perameters missing'
+//     });
+//   }else{
+//     Events.findOne({_id:req.params.id}).exec(function(error,Events){
+//     //  console.log(Events);
+//       Events.title=req.body.title?req.body.title:Events.title;
+//       Events.subtitle=req.body.subtitle?req.body.subtitle:Events.subtitle;
+//       Events.description=req.body.description?req.body.description:Events.description;
+//       Events.imageurl=req.body.imageurl?req.body.imageurl:Events.imageurl;
+//       Events.date=req.body.date?req.body.date:Events.date;      
+//       Events.save(function(error,Events){
+//         if(error){
+//           res.status('500').send({message:'error found'})
+//         }else{
+//           res.status('202').send({message:'updated'})
+//         }
+//       });
+//     })
+//  }
+// }
 
 exports.getAll = function (req, res) {
     Events

@@ -107,6 +107,47 @@ exports.getAll = function (req, res) {
 }
 
 
+exports.edit=function(req,res){
+    if(req.params.id==undefined){
+      res.status(404).send({
+        message:'one or more perameters missing'
+      });
+    }else{
+      Events.findOne({_id:req.params.id}).then(function(result){
+        if(!result){
+          res.status(404).send({Error:"No data found"});
+        }else{
+          res.render("editNewsForm",{news:result});
+        }
+      })
+   }
+  }
+
+  exports.editNews = function(req,res){
+    console.log(req.body);
+    Events.findOne({_id:req.body.id}).exec(function(err,news){
+        if(err){
+            res.status('500').send({message:'error'})
+        }
+        else{
+            // console.log(notification);
+            news.title=req.body.title;
+            news.subtitle=req.body.subtitle;
+            news.description=req.body.description;
+            news.date=req.body.date;
+            news.save(function(err,result){
+                if(err){
+                    res.status('500').send({message:'error found'})
+                }
+                else{
+                    console.log(result);
+                    res.render("viewevent",{news:result});
+                }
+            });
+        }
+    })
+  }
+
 
 // exports.add = upload.any(), function(req, res, next){
 //     if(req.file){

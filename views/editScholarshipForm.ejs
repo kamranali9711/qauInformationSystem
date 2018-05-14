@@ -25,7 +25,7 @@
 				<li  class="Transport"><a href="/page/transports">Transports</a></li>
 				<li class="news"><a href="/page/dining">Dining</a></li>
 				<li class="contact"><a href="/page/notification">Notification</a></li>
-				<li class="contact"><a class="active" href="/page/events">Events</a></li>
+				<li class="contact"><a  href="/page/events">Events</a></li>
 				<li class="contact"><a href="/page/news">News</a></li>
 				<li class="News"><a href="/page/admission">Admission</a></li>
 				<li class="contact" style="float:right"><a href="/">Logout</a></li>
@@ -52,37 +52,42 @@
 
 
 			
-				<form  method="post" enctype="multipart/form-data" type="submit" action="/api/events/add" id="myForm>
-					<label for="title" style="margin-left:30px; margin-top:50px">Tilte</label>
-					<textarea class="dataedit" name="title" type="text" id="title" rows="2" cols="150" required placeholder="Tilte of Event...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
+				<form  method="post"  action="/api/scholarship/editScholarship" id="myForm>
 					
-					<!-- Band Description
-					<input type="text" id="fname" name="firstname" placeholder="Your name.."> -->
+					
+					
 
-					<label for="subtitle" style="margin-left:30px; margin-top:50px; padding-top:50px">Subtitle</label>
-					<textarea class="dataedit" name="subtitle" type="text" id="subtitle" rows="3" cols="150" required placeholder="Subtitle of Event...." style="margin-left:30px;margin-top:10px;margin-bottom:10px"></textarea>
-				<!--	<input class="dataedit" name="description" type="text" id="description"  placeholder="Description of Schorarship...." style="margin-left:30px;margin-top:10px;margin-bottom:10px;height:50px;width:500px"></input>-->
 					
+					<br/>
+					<label for="fname" style="margin-left:30px; margin-top:100px"></label>
+					<input type="hidden" type="hidden" id="id" name="id" style="width:30%;margin-left:30px"  value=<%=scholarship._id%>  </input>
+					<br/>
+					<input type="hidden"  name="title" id="title" style="width:90%;margin-left:30px" name="title" value=<%=scholarship.title%>  </input>
+					<br/>
 					
-					<label for="description" style="margin-left:30px;margin-top:30px">Description</label>
-					<textarea class="dataedit" name="description" type="text" id="description" rows="5" cols="150" required placeholder="Description of Event...." style="margin-left:30px;margin-top:10px;margin-bottom:15px"></textarea>
+					<label for="lname" style="margin-left:30px; margin-top:100px; padding-top:100px"></label>
+					<br/>
+					<input  type="hidden" name="requirement" id="requirement" style="width:90%;margin-left:30px" name="description" value=<%=scholarship.requirement%> </input>
+                    <br/>
 
-					<div class="col-25">
-						<label for="color" style="margin-left:30px; margin-top:50px; padding-top:50px">Image</label>
-					  </div>
+                    <label for="lname" style="margin-left:30px; margin-top:100px; padding-top:100px"></label>
+					<br/>
+					<input  type="hidden" name="description" id="description" style="width:90%;margin-left:30px" name="description" value=<%=scholarship.description%> </input>
+					<br/>
+				
+				
 
-					   <div class="col-75">
-						<input type=file name="userFile"  id="userFile" required="required" style="margin-left:30px;margin-top:10px;margin-bottom:15px">
-					  </div>
-
-							
-					<label  style="margin-left:35%; margin-top:50px">Event Date: </label>
-					 <!-- <input id="datepicker" name="date" required id="date" required /> -->
-					 <input id="datepicker" name="date"  id="date" required  placeholder='Select date' />
 					
-					<button type="submit"  class="button button1" value="Add Row" style="margin-top:30px">Submit</button>
-					
+					<label  style="margin-left:30px; margin-top:100px"> </label>
+					<center>Update scholarship Date</center>
+					<br/>
+					 <input  id="datepicker"  name="date" id="date" style="width:20%;margin-left:40%" value=<%=scholarship.date%>  required />
+					 <br/>
 			
+
+					
+					<button type="submit" value="submit"  class="button button1"  style="margin-top:30px">Submit</button>
+					
 			
 			
 		   

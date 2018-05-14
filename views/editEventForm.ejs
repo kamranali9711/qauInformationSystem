@@ -1,46 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-<link href="/css/updateform.css" rel="stylesheet">
+	<link href="/css/events.css" rel="stylesheet">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!--For clander -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<!--For clander -->
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<style>
- 
-  </style>
-<style>
-
-
-</style>
-
-<style>
-
-</style>
 </head>
 <body onload="myFunction()">
 <div>
-	
-		 <div  >
+	 <div  >
         <img src="/images/qau1.png" height="100px" width="700px" style="margin-left: 300px">
         
     </div>
 	<div onload="myFunction()">
 			<div class="nav">
-				<ul >
-				<li class="Dashbord"><a href="/page/dashbord">Dashbord</a></li>
+				<ul>
+				<li class="home"><a href="/page/dashbord">Dashbord</a></li>
 				<li class="Schorarship"><a  href="/page/scholarships">Schorarship</a></li>
-				<li class="Transport"><a href="/page/transports">Transport</a></li>
-				<li class="Dining"><a href="/page/dining">Dining</a></li>
-				<li class="Program"><a class="active" href="/page/notification">Notification</a></li>
-				<li class="Events"><a href="/page/events">Events</a></li>
-				<li class="News"><a href="/page/news">News</a></li>
-				<li class="News"><a  href="/page/admission">Admission</a></li>
-				<li class="Logout" style="float:right"><a href="/">Logout</a></li>
+				<li  class="Transport"><a href="/page/transports">Transports</a></li>
+				<li class="news"><a href="/page/dining">Dining</a></li>
+				<li class="contact"><a href="/page/notification">Notification</a></li>
+				<li class="contact"><a  href="/page/events">Events</a></li>
+				<li class="contact"><a href="/page/news">News</a></li>
+				<li class="News"><a href="/page/admission">Admission</a></li>
+				<li class="contact" style="float:right"><a href="/">Logout</a></li>
 				<div class="dropdown">
 					<button class="dropbtn">Data View 
 					<i class="fa fa-caret-down"></i>
@@ -55,107 +43,157 @@
 	  <a href="/page/viewnotification">Notification Data</a>
 					</div>
 				</div> 
-				
-
 			  </ul>
 			
 			</div>
-			<!-- <div class="form"> -->
-				<!-- <h2 style="margin-left:450px">Notification detail Form </h2> -->
-				<div id="abc">
-				<form action="#" id="form" method="post" name="form">
-					<!-- <img id="close" src="images/3.png" onclick ="div_hide()"> -->
-					<h2>Admission Update Form</h2>
-					<hr>
-					<input id="id" name="id" <%value="admissions._id"%> placeholder="Name" type="text">
-					<input id="discipline" name="discipline" value="admissions.discipline" placeholder="Name" type="text">
-					<input id="requirement" name="requirement" value="admissions.requirement" placeholder="Name" type="text">
-					<!-- <textarea id="discipline" name="discipline" value="admissions.discipline" placeholder="Message"></textarea>
-					<textarea id="requirement" name="requirement" value="admissions.requirement" placeholder="Message"></textarea> -->
-					<input id="lastdate" lastdate="lastdate" placeholder="Name" value="admissions.lastdate" type="text">
-					<!-- <input id="email" name="email" placeholder="Email" type="text"> -->
+			<div class="form">
+				<h2 style="margin-left:450px">Events detail Form </h2>
+
+
+
+			
+				<form  method="post"  action="/api/event/editevent" id="myForm>
 					
-					<a href="javascript:%20check_empty()" id="submit">Send</a>
-					</form>
-					</div>
-				</div>
-<!-- 				
-				<form  method="post" id="form"  name="myForm" type="submit" action="/api/admission/editAdmission">
-                    <input type="text" id="id" name="id" value=<%=admissions._id%>  </input>
-                    <label for="fname" style="margin-left:30px; margin-top:50px">Title</label>
-					<input type="text" id="title" name="title" value=<%=admissions.discipline%>  </input>
+					
 					
 
 					
-					<label for="lname" style="margin-left:30px; margin-top:50px; padding-top:50px">Description</label>
-					<input type="text" id="description" name="description" value=<%=admissions.requirement%> </input>
+					<br/>
+					<label for="fname" style="margin-left:30px; margin-top:100px"></label>
+					<input type="hidden" type="hidden" id="id" name="id" style="width:30%;margin-left:30px"  value=<%=event._id%>  </input>
+					<br/>
+					<input type="hidden"  name="title" id="title" style="width:90%;margin-left:30px" name="title" value=<%=event.title%>  </input>
+					<br/>
+					
+					<label for="lname" style="margin-left:30px; margin-top:100px; padding-top:100px"></label>
+					<br/>
+					<input  type="hidden" name="subtitle" id="subtitle" style="width:90%;margin-left:30px" name="description" value=<%=event.subtitle%> </input>
+					<br/>
+					
+					<label for="lname" style="margin-left:30px; margin-top:100px; padding-top:100px"></label>
+					<br/>
+					<input type="hidden" name="description" id="description" style="width:90%;margin-left:30px" name="description" value=<%=event.description%> </input>
+					<br/>
 
 					
-					<label  style="margin-left:35%; margin-top:50px">Last Date: </label>
-					 <input  id="datepicker" name="lastdate" id="lastdate" value=<%=admissions.lastdate%>  required />
+					<label  style="margin-left:30px; margin-top:100px"> </label>
+					<center>Update Event Date</center>
+					<br/>
+					 <input  id="datepicker"  name="date" id="date" style="width:20%;margin-left:40%" value=<%=event.date%>  required />
+					 <br/>
 			
 
 					
 					<button type="submit" value="submit"  class="button button1"  style="margin-top:30px">Submit</button>
 					
-                </form>
-                -->
-                
-     
 			
-			<!-- </div> -->
+			
+		   
+				</form>  
+			
+			</div>
+				
+			
+			
+		
+
+
+
 	</div>
 	
 </div>
-<div class="footer">
-			
-	</div>
-
-<!-- Band Description -->
 
 <!-- For calander  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<!-- load jQuery UI CSS theme -->
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <script>
-  $(document).ready(function() {
-    $("#datepicker").datepicker();
-  });
+		$('#datepicker').datepicker({ minDate: 0 });
   </script>
 
+<script>
+// Automatic Slideshow - change image every 3 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 3000);
+}
+	
+
+
+</script>
 
 <!-- For Background image -->
 <script>
 function myFunction() {
     document.body.style.backgroundColor = "#f3f3f3";
     document.body.style.backgroundImage = "url('https://www.digitalplatforms.co.za/wp-content/uploads/2015/11/Website-Design-Background.png')";
-	  var mydata;
-    var userdata;
-    var id;
-  $(document).ready(function(){
-
-            $.getJSON("http://localhost:3000/api/scholarship", function(data){
-                
-                $.each(data, function(i, field){
-                  userdata = data;
-                     
-                   $('#myTable').append('<tr><td>'+field.title+'</td><td>'+field.requirement+'</td><td>'+field.description+'</td><td>'+field.date+'</td><td><button>Update</button></td><td><button onclick="get()"  >Delete</button></td></tr>');
-                     /*mydata= field.title + field.requirement + field.description + field.date;*/
-                    
-                    });
-
- 
-            })
-        });
-
-
 }
+</script>
+<script>
 
-
-
-
-
+function message() {
+    alert("Data is submit successfully!");
+}
+function validateForm() {
+    var x = document.forms["myForm"]["name"].value;
+    var y = document.forms["myForm"]["fname"].value;
+    if (x == "") {
+        alert("Hurt name must be filled out");
+        return false;
+    }
+    else if( y == ""){
+       alert("Menu must be filled out");
+        return false;
+    }
+    else{
+      alert("Data is submit successfully!");
+      return true;
+    }
 </script>
 
+
+<script>
+$("#myForm").submit(function(e) {
+	e.preventDefault();
+	var name = $("#name").val();
+	var menu = $("#menu").val();
+  
+  
+
+	
+	if(name == "" || menu == "" ) {
+		$("#error_message").show().html("All Fields are Required");
+	} else {
+		$("#error_message").html("").hide();
+		$.ajax({
+			type: "POST",
+			url: "/api/dining/add",
+			data: "name="+name+"&menu="+menu,
+			success: function(data){
+				$('#success_message').fadeIn().html(data);
+				setTimeout(function() {
+					$('#success_message').fadeOut("slow");
+				}, 2000 );
+
+			}
+		});
+	}
+})
+}
+</script>	
 
 
 </body>
 </html>
-
