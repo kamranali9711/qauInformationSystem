@@ -42,63 +42,54 @@
 				</div> 
 			  </ul>
 			
-            </div>
-            
-            <style>
-                input[type=text], select {
-                    width: 100%;
-                    padding: 12px 20px;
-                    margin: 8px 0;
-                    display: inline-block;
-                    border: 1px solid #ccc;
-                    border-radius: 4px;
-                    box-sizing: border-box;
-                }
-                
-                input[type=submit] {
-                    width: 100%;
-                    background-color: #4CAF50;
-                    color: white;
-                    padding: 14px 20px;
-                    margin: 8px 0;
-                    border: none;
-                    border-radius: 4px;
-                    cursor: pointer;
-                }
-                
-                input[type=submit]:hover {
-                    background-color: #45a049;
-                }
-                
-                div {
-                    border-radius: 5px;
-                    background-color: #f2f2f2;
-                    padding: 20px;
-                }
-                </style>
-			<h3>Using CSS to style an HTML Form</h3>
+			</div>
+			<div class="form">
+				<h2 style="margin-left:450px">Transport detail Form </h2>
+				
+				<form  method="post" id="form"  name="myForm" type="submit" action="/api/routes/editTransport">
+					<label for="route" style="margin-left:250px;margin-top:50px; padding-top:50px">Route</label>
+                    <label for="busno" style="margin-left:300px;margin-top:50px; padding-top:50px">Bus No</label><br>
+                    <input type="hidden" type="hidden" id="id" name="id" style="width:30%;margin-left:30px"  value=<%=transport._id%>  </input><br>
+                    <input type="text" type="text" id="route" name="route" style="width:30%;margin-left:30px"  value=<%=transport.route%>  </input>
+					
+					
+					<!-- Band Description
+					<input type="text" id="fname" name="firstname" placeholder="Your name.."> -->
+					
+                <!--	<label for="busno" style="margin-left:100px">Bus No</label>-->
+                <input type="number" type="number" id="busno" name="busno" onkeypress="return isNumber(event)" style="width:30%;margin-left:30px"  value=<%=transport.busno%>  </input><br>
+					
 
-            <div>
-              <form method="post" id="form"  name="myForm" type="submit" action="/api/routes/editTransport">
-                <label for="fname">Routes</label>
-                <input type="text" id="fname" name="firstname" value=<%=transport.route%> >
-            
-                <label for="lname">Bus No</label>
-                <input type="text" id="lname" name="lastname" value=<%=transport.busno%>>
-
-                <label for="lname">Routes Detail</label>
-                <input type="text" id="lname" name="lastname" value=<%=transport.detail%>>
-
-                <label for="lname">Last Name</label>
-                <input type="time" name="time" id="time" value=<%=transport.time%>>
-            
-                
-               
-              
-                <input type="submit" value="Submit">
-              </form>
-            </div>
-            
+					<label for="detail" style="margin-left:30px; margin-top:50px; padding-top:50px"></label>
+					<input class="dataedit" name="detail" type="hidden" id="detail" rows="5" cols="150" required placeholder="Detail of route...." style="margin-left:30px;margin-top:10px;margin-bottom:10px" value=<%=transport.detail%></input><br>
+				<!--	<input class="dataedit" name="description" type="text" id="description"  placeholder="Description of Schorarship...." style="margin-left:30px;margin-top:10px;margin-bottom:10px;height:50px;width:500px"></input>-->
+					
+					
+					
+					
+					
+					<label  style="margin-left:40%; margin-top:50px ; margin-right:10px" required >Time</label>
+					
+					<input type="time" name="time" required id="time" value=<%=transport.time%>>
+					
+					<button type="submit"  class="button button1" value="Add Row" style="margin-top:30px">Submit</button>
+					
+			
+			
+				<!-- Band Description 
+				<label for="country">Country</label>
+				<select id="country" name="country">
+				  <option value="australia">Australia</option>
+				  <option value="canada">Canada</option>
+				  <option value="usa">USA</option>
+				</select>-->
+		  
+		   
+				</form>
+				
+			
+			</div>
+			
 			
 		<!--!		 <table border="1" id="data" style="margin-left:10px; width: 100%; margin-right:10px">
 					<thead>
@@ -129,27 +120,16 @@
 	
 </div>
 
-
-
 <script>
-    function myFunction() {
-      var input, filter, table, tr, td, i;
-      input = document.getElementById("myInput");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("myTable");
-      tr = table.getElementsByTagName("tr");
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
-        }
-      }
+	function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
     }
-    </script>
+    return true;
+}
+</script>
 
 <script>
 // Automatic Slideshow - change image every 3 seconds
