@@ -68,7 +68,7 @@ exports.delete = function(req, res, next){
         }
         else{
             Notification.find({}).then(function(result){
-                res.render("viewNotification",{notification:result});
+                res.render("viewnotification",{notification:result});
             })
         }
     });
